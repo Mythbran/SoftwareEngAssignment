@@ -1,5 +1,3 @@
-package software.assignment.business;
-
 /*
 * This clss will be the car object
 * All important information regarding every possible rental car is here
@@ -7,13 +5,19 @@ package software.assignment.business;
 * This class is complete 
 */
 
+
+package software.assignment.business;
+
 public class Car{
+    
+    // INSTATIATING ALL VARIABLES 
     
     private String location = "";
     private String availability = "";
     private float price; 
     private String model = "";
 
+    //GETTERS AND SETTERS FOR ALL VARIABLES 
     public String getLocation() {
         return location;
     }
