@@ -34,7 +34,7 @@
                 <form action="<c:url value="adminLogin.do"/>" method="post">
                     <input type="submit" value="Administrator Login" name="admin" />
                 </form>                
-            </p>
+            </p>        
         </main>
     </body>
 

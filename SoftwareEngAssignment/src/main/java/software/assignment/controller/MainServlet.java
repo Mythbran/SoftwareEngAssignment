@@ -52,8 +52,8 @@ public class MainServlet extends HttpServlet {
             //MEMBERSHIP PAGES 
 
             //MEMBERSHIP LOGIN SCREEN 
-            case "/membershipLogin.do":{
-                view = "membershipLogin";
+            case "/memberLogin.do":{
+                view = "memberLogin";
                 break;
             }
             
