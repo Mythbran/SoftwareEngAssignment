@@ -6,5 +6,5 @@
 
 <%@ page session="true"%>
 <% 
-    response.sendRedirect("index.do");
+    response.sendRedirect("hello.do");
 %>
