@@ -31,6 +31,30 @@ public class Member{
     @Pattern(regexp = "1-9", message = "Invalid Credit Card Number")
     private String cCard = "";       
 
+    @NotNull (message = "Missing UserName")
+    @Pattern(regexp = "([a-zA-Z'.,-]+\\s*)+", message = "Invalid username")
+    private String uName = "";
+    
+    @NotNull (message = "Missing password")
+    @Pattern(regexp = "([a-zA-Z'.,-]+\\s*)+", message = "Invalid password")
+    private String password = "";    
+
+    public String getuName() {
+        return uName;
+    }
+
+    public void setuName(String uName) {
+        this.uName = uName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     //GETTERS AND SETTERS FOR ALL VARIABLES 
     
     public int getId() {
