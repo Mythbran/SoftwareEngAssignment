@@ -26,7 +26,7 @@
                 </form>
             </p>  
             <p>
-                <form action="<c:url value="updateCar.do"/>" method="post">
+                <form action="<c:url value="editCar.do"/>" method="post">
                     <input type="submit" value="Update Cars" name="updateCar" />
                 </form>
             </p>

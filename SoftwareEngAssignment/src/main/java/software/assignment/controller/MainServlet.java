@@ -74,7 +74,7 @@ public class MainServlet extends HttpServlet {
             //WILL ONLY ALLOW THE SIGNED IN MEMBER TO EDIT THEIR OWN INFO
             case "/editMember.do":{
                 view = "editMember";
-                jspPath= "/WEB-INF/jsp/member";
+                jspPath= "/WEB-INF/jsp/member/";
                 break;
             }
             //ADMIN PAGES  
@@ -102,7 +102,7 @@ public class MainServlet extends HttpServlet {
             //THIS WILL ALLOW ADMINS TO ADD CARS TO THE DATABASE 
             case "/addCar.do":{
                 view = "addCar";
-                jspPath = "/WEB-INF/jsp/admin";
+                jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
             
@@ -111,7 +111,7 @@ public class MainServlet extends HttpServlet {
             //THIS WILL ALLOW ADMINS TO EDIT CARS INCLUDING DELETING FROM DATABASE
             case "/editCar.do":{
                 view = "editCar";
-                jspPath = "WEB-INF/jsp/admin";
+                jspPath = "WEB-INF/jsp/admin/";
                 break; 
             }
             
@@ -120,7 +120,7 @@ public class MainServlet extends HttpServlet {
             //ADMINS WILL BE ALLOWED TO SET MEMBERS AS ADMINS
             case "/viewAll.do":{
                 view = "viewAll";
-                jspPath = "/WEB-INF/jsp/admin";
+                jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
             
