@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package software.assignment.controller;
 
 import java.io.IOException;
@@ -51,15 +52,14 @@ public class MainServlet extends HttpServlet {
                 jspPath = "/WEB-INF/jsp/general/";
                 break;
             }
-
-            //MEMBERSHIP PAGES 
-
-            //MEMBERSHIP LOGIN SCREEN 
-            case "/memberLogin.do":{
-                view = "memberLogin";
-                jspPath = "/WEB-INF/jsp/member/";
+            
+            case "/login.do":{
+                view = "login";
+                jspPath = "WEB-INF/jsp/general/";
                 break;
             }
+
+            //MEMBERSHIP PAGES 
             
             //THIS WILL SEND TO A PAGE THAT HANDLES MEMBER REGISTRATIONS 
             case "/membership.do":{
@@ -78,16 +78,7 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             //ADMIN PAGES  
-            
-            //ADMIN LOGIN SCREEN 
-            //WILL BE USED STRICTLY FOR ADMINS TO LOGIN 
-            //ACTUAL ADMIN PORTAL WILL BE SOMETHING DIFFERENT 
-            case "/adminLogin.do":{
-                view = "adminLogin";
-                jspPath = "/WEB-INF/jsp/admin/";
-                break;
-            }
-            
+                       
             //ADMIN PORTAL 
             //NEEDS MUCH MORE WORK 
             //WILL SEND TO THE MAIN PAGE HANDLING ALL ADMIN RELATED THINGS
@@ -121,6 +112,14 @@ public class MainServlet extends HttpServlet {
             case "/viewAll.do":{
                 view = "viewAll";
                 jspPath = "/WEB-INF/jsp/admin/";
+                break;
+            }
+            
+            //DELETE MEMBER
+            //BASED ON UID 
+            case "/delete.do":{
+                view = "delete";
+                jspPath = "WEB-INF/jsp/admin/";
                 break;
             }
             

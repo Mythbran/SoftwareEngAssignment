@@ -16,6 +16,7 @@ public class Car{
     private String availability = "";
     private float price; 
     private String model = "";
+    private int id;
 
     //GETTERS AND SETTERS FOR ALL VARIABLES 
     public String getLocation() {

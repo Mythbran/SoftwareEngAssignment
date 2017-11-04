@@ -9,7 +9,7 @@
 <html>
     
     <head> 
-        <title>Member Login</title>
+        <title>Login</title>
     </head>
     
     <body>
@@ -22,7 +22,7 @@
                 </ul>
             </c:if>
             
-            <h1> Membership login</h1>
+            <h1>Login</h1>
             
             <form method="post" action="<c:url value="rentals.do"/>"/>
                     

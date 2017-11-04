@@ -14,7 +14,13 @@
     
     <body>
         <main>
-            <h1>Welcome to vehicle rental system</h1>
+            <p>
+            <h1>Welcome to vehicle rental system</h1>            
+            <form action="<c:url value="login.do"/>" method="post">
+                <input type="submit" value="Login" name="login" />
+            </form> 
+            </p>
+            </p>  
             <p>
                 <form action="<c:url value="rentals.do"/>" method="post">
                     <input type="submit" value="Book a Rental" name="rental" />
@@ -25,16 +31,17 @@
                     <input type="submit" value="Become a Member" name="membership" />
                 </form>
             </p>  
+
             <p>
-                <form action="<c:url value="memberLogin.do"/>" method="post">
-                    <input type="submit" value="Member Login" name="memberLogin" />
+                <form action="<c:url value="editMember.do"/>" method="post">
+                    <input type="submit" value="Edit your information" name="editMember" />
                 </form>
-            </p>
+            </p>  
             <p>
-                <form action="<c:url value="adminLogin.do"/>" method="post">
-                    <input type="submit" value="Administrator Login" name="admin" />
-                </form>                
-            </p>        
+                <form action="<c:url value="adminPortal.do"/>" method="post">
+                    <input type="submit" value="Admin Portal" name="adminPortal" />
+                </form>
+            </p>  
         </main>
     </body>
 

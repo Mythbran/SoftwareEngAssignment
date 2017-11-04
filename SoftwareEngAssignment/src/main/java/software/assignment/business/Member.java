@@ -37,7 +37,9 @@ public class Member{
     
     @NotNull (message = "Missing password")
     @Pattern(regexp = "([a-zA-Z'.,-]+\\s*)+", message = "Invalid password")
-    private String password = "";    
+    private String password = "";  
+    
+    private String admin = "no";
 
     public String getuName() {
         return uName;
