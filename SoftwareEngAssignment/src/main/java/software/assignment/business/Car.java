@@ -18,6 +18,14 @@ public class Car{
     private String model = "";
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     //GETTERS AND SETTERS FOR ALL VARIABLES 
     public String getLocation() {
         return location;

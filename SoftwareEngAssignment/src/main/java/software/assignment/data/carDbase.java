@@ -49,14 +49,14 @@ public class carDbase{
     
     //NEEDS TESTING 
     //WILL DELETE ONE CAR 
-    public static void deleteOne(int uid){    
+    public static void deleteOne(int id){    
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE * from car where uid="+uid;
+        String DELETE = "DELETE * from car where uid="+id;
         try{
             ps = connection.prepareStatement(DELETE);
-            ps.setInt(1, uid);
+            ps.setInt(1, id);
             ps.executeUpdate();
         }catch (SQLException e){
             System.err.println(e);
@@ -141,7 +141,7 @@ public class carDbase{
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String SELECT = "select * from ar where id = ?";
+        String SELECT = "select * from car where id = ?";
         try{
             ps = connection.prepareStatement(SELECT);
             ps.setInt(1, uid);
