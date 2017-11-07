@@ -53,14 +53,6 @@ public class Member{
         return uName;
     }
 
-    public String getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(String admin) {
-        this.admin = admin;
-    }
-
     public void setuName(String uName) {
         this.uName = uName;
     }
