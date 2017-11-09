@@ -63,6 +63,10 @@
                      
                 </p>    
               
+                <p>
+                    <label for="admin"> Admin: </label>
+                    <input id="admin" type="hidden" name="admin" value="no"/>
+                </p>
 
             </p>
                 <p>

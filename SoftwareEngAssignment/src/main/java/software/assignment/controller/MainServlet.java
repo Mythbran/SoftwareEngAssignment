@@ -85,6 +85,7 @@ public class MainServlet extends HttpServlet {
                 member.setcCard(request.getParameter("cCard"));
                 member.setuName(request.getParameter("uName"));
                 member.setAdmin(request.getParameter("admin"));
+                member.setPassword(request.getParameter("password"));
                 
                 //THIS IS WHERE TO DO ALL THE VALIDATION SHIT 
                 //NEED TO PROGRAM THAT IN LATER............
@@ -100,11 +101,15 @@ public class MainServlet extends HttpServlet {
             //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
             case "/memberSubmit.do":{
                 HttpSession session = request.getSession(false);
-                Member member = (Member)session.getAttribute("member");
-                memberDbase.insert(member);
-                int id = member.getId();
-                response.sendRedirect(response.encodeRedirectURL("hello.do"));
-                return;
+                if(session.getAttribute("member")==null){
+                    
+                }else{
+                    Member member = (Member)session.getAttribute("member");
+                    memberDbase.insert(member);
+                    
+                    response.sendRedirect(response.encodeRedirectURL("hello.do"));
+                    return;
+                }
             }
             
             //EDIT MEMBER

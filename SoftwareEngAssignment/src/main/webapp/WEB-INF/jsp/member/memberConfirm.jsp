@@ -35,6 +35,16 @@
                 <span class="output"><c:out value="${member.uName}"/></span>
             </p>
             
+            <p>
+                <label>Password: </label>
+                <span class ="output"><c:out value="${member.password}"/></span>
+            </p>
+            
+            <p>
+                <label>admin:  </label>
+                <span class ="output"><c:out value="${member.admin}"/></span>
+            </p>
+            
             <form method="post" action="<c:url value="memberSubmit.do"/>">
                 <input type="submit" value="Submit"/>
             </form>
