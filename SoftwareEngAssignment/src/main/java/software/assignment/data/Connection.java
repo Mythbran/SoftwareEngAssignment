@@ -23,7 +23,7 @@ public class Connection {
     private Connection() {
         try {
             InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup("**** EDIT ME ****** ");
+            dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/softwareeng");
         } catch (NamingException e) {
             System.err.println(e);
         }

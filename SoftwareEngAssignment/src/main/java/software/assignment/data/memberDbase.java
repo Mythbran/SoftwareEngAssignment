@@ -28,7 +28,7 @@ public class memberDbase{
         
         String INSERT = "INSERT INTO member "
                 + "(fName, lName, pNumber, cCard, uName, password, admin)"
-                + "VALUES (?,?,?,?, ?, ?, ?)";
+                + "VALUES (?,?,?,?, ?, ?, no";
         
         try{
         ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
@@ -39,6 +39,7 @@ public class memberDbase{
         ps.setString(5, member.getuName());
         ps.setString(6, member.getPassword());
         ps.setString(7, member.getAdmin());
+        ps.setString(8, member.getPassword());
         
         ps.executeUpdate();
         ResultSet keys = ps.getGeneratedKeys();

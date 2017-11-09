@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.util.*;
 import javax.validation.ConstraintViolation;
+import software.assignment.business.Member;
+import software.assignment.data.memberDbase;
 
 /**
  *
@@ -61,11 +63,48 @@ public class MainServlet extends HttpServlet {
 
             //MEMBERSHIP PAGES 
             
-            //THIS WILL SEND TO A PAGE THAT HANDLES MEMBER REGISTRATIONS 
+            //THIS WILL SEND TO A PAGE THAT HANDLES MEMBER REGISTRATIONS
+            //TAKES ALL REGISTRATIONS AND SENDS IT TO MEMBERCONFIRM CLASS
             case "/membership.do":{
                 view = "membership";
-                jspPath = "/WEB-INF/jsp/member/";
+                jspPath = "/WEB-INF/jsp/member/";      
                 break;
+            }
+            
+            //THIS WILL HANDLE CONFIRMING IF THE ENTERED DATA IS CORRECT 
+            //TAKES INPUT FROM MEMBERSHIP CLASS
+            //SENDS THE CONFIRMED DATA TO THE SUBMIT METHOD 
+            //THAT'S WHERE IT GETS SENT INTO THE DATABASE 
+            case "/memberConfirm.do":{
+                view = "memberConfirm";
+                jspPath = "/WEB-INF/jsp/member/";
+                Member member = new Member();
+                member.setfName(request.getParameter("fName"));
+                member.setlName(request.getParameter("lName")); 
+                member.setpNumber(request.getParameter("pNumber"));
+                member.setcCard(request.getParameter("cCard"));
+                member.setuName(request.getParameter("uName"));
+                member.setAdmin(request.getParameter("admin"));
+                
+                //THIS IS WHERE TO DO ALL THE VALIDATION SHIT 
+                //NEED TO PROGRAM THAT IN LATER............
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("member", member);
+                break;
+            }
+            
+            //OH SUBMIT 
+            //THIS IS WHERE THE MAGIC HAPPENS 
+            //AND DATABASES FILL UP
+            //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
+            case "/memberSubmit.do":{
+                HttpSession session = request.getSession(false);
+                Member member = (Member)session.getAttribute("member");
+                memberDbase.insert(member);
+                int id = member.getId();
+                response.sendRedirect(response.encodeRedirectURL("hello.do"));
+                return;
             }
             
             //EDIT MEMBER

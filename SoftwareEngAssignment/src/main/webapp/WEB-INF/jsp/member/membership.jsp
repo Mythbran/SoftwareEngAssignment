@@ -26,7 +26,7 @@
             
             
             <h1>Membership Registration Form</h1>
-            <form method="post" action="memberLogin.do"/>
+            <form method="post" action="memberConfirm.do"/>
                 <p>
                     <label for="first">First Name:</label>
                     <input id="first" type="text" name="fName" value="<c:out value="${param.fName}"/>" required/>
@@ -62,8 +62,7 @@
                     <input id="password" type="password" name="password" value="<c:out value="${param.password}"/>" required/>
                      
                 </p>    
-                
-                            <p>
+              
 
             </p>
                 <p>
