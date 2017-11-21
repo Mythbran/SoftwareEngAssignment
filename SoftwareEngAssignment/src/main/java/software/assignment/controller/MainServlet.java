@@ -141,6 +141,9 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
+            //CONFIRM CAR   
+            //ADDCAR.DO WILL PASS TO THIS CLASS 
+            
             //EDIT CAR
             //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO EDIT CARS INCLUDING DELETING FROM DATABASE

@@ -53,7 +53,7 @@
                 <p>
                     <label>&nbsp;</label>
                     <input type="reset" value="Clear" name="Clear" />
-                    <input type="submit" value="Register" name="Add" />     
+                    <input type="submit" value="Add" name="Add" />     
                 </p>
             </form>
             <form action="<c:url value="hello.do"/>" method="post"> 
