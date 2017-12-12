@@ -2,8 +2,10 @@
 
 package software.assignment.data;
 
-
-
+import software.assignment.business.Member;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class memberDbase{
@@ -30,7 +32,7 @@ public class memberDbase{
             else{
                 ps.setInt(6, 0);
             }
-            ps.setString(7, getPassword)
+            ps.setString(7, getPassword);
         } catch(SQLException e){
             System.err.println(e);
         } finally{
