@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//This class isn't the one causing the NPE. Must be another class before this one... 
 
 package software.assignment.data;
 
@@ -11,45 +7,41 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-/**
- *
- * @author Oracle
- */
-public class Connection {
-
+public class Connection{
+    
     private static Connection pool = null;
     private static DataSource dataSource = null;
-
-    private Connection() {
-        try {
+    
+    private Connection(){
+        try{
             InitialContext ic = new InitialContext();
             dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/softwareeng");
-        } catch (NamingException e) {
+        }catch (NamingException e){
             System.err.println(e);
         }
     }
-
-    public static synchronized Connection getInstance() {
-        if (pool == null) {
+    
+    public static synchronized Connection getInstance(){
+        if (pool == null){
             pool = new Connection();
         }
         return pool;
     }
-
-    public java.sql.Connection getConnection() {
-        try {
+    
+    public java.sql.Connection getConnection(){
+        try{
             return dataSource.getConnection();
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             System.err.println(e);
             return null;
         }
     }
-
-    public void freeConnection(java.sql.Connection c) {
-        try {
+    
+    public void freeConnection(java.sql.Connection c){
+        try{
             c.close();
-        } catch (SQLException e) {
+        }catch(SQLException e){
             System.err.println(e);
         }
-    }    
+    }
 }

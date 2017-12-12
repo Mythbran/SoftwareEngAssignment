@@ -13,7 +13,7 @@ import software.assignment.business.Member;
 
 public class memberDbase{
     
-        //NEED TO TEST 
+    //NEED TO TEST 
     //WILL INSERT MEMBERS INTO THE MEMBER DATABASE 
     //WILL HAVE TO IMPLEMENT HASHING FOR THE PASSWORDS EVENTUALLY 
     //DON'T WANT THEM CLEARTEXT PASSWORDS NOW DO WE???? 
@@ -31,9 +31,9 @@ public class memberDbase{
                 + "VALUES (?, ?, ?, ?, ?, ?, ?";
         
         try{
-        ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        ps = connection.prepareStatement(INSERT);
         ps.setString(1, member.getfName());
-        ps.setString (2, member.getlName());
+        ps.setString(2, member.getlName());
         ps.setString(3, member.getpNumber());
         ps.setString(4, member.getcCard());
         ps.setString(5, member.getuName());
@@ -41,7 +41,7 @@ public class memberDbase{
         ps.setString(7, member.getAdmin());
         
         ps.executeUpdate();
-        ResultSet keys = ps.getGeneratedKeys();
+        
         
         } catch (SQLException e) {
             System.err.println(e);
