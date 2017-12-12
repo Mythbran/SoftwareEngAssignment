@@ -19,9 +19,8 @@ public class carDbase{
     //NEED TO TEST 
     //WILL INSERT CARS INTO THE CAR DATABASE 
     public static void insert(Car car){
-        //Connection pool = Connection.getInstance();
-        //java.sql.Connection connection = pool.getConnection();
-       /* Connection connection = Connection.getConnectionTest();
+        Connection pool = Connection.getInstance();
+        java.sql.Connection connection = pool.getConnection();
 
         
         PreparedStatement ps = null;    
@@ -47,7 +46,7 @@ public class carDbase{
             DatabaseUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
-     */         
+             
     }
     
     //NEEDS TESTING 

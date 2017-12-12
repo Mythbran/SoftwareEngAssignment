@@ -11,13 +11,6 @@ import javax.sql.DataSource;
 
 
 public class Connection{
-
-    //CONNNECTION TEST THINGS
-    private static String url = "jdbc:mysql://localhost:3306/softwareeng";
-    private static Connection con;
-    private static String username = "root";
-    private static String password = "sesame";
-    private static String driverName = "com.mysql.jdbc.Driver";
     
     private static Connection pool = null;
     private static DataSource dataSource = null;
@@ -47,19 +40,6 @@ public class Connection{
         }
     }
     
-    public static Connection getConnectionTest(){
-        try{
-            Class.forName(driverName);
-            try{
-                con = (Connection) DriverManager.getConnection(url, username, password);
-            }catch(SQLException e){
-                System.out.println("Failed to create database connection");
-            }
-        }catch(ClassNotFoundException e){
-            System.out.println("Driver not found");
-        }
-        return con;
-    }
     public void freeConnection(java.sql.Connection c){
         try{
             c.close();
