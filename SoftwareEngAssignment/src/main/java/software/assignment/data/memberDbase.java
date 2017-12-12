@@ -88,7 +88,7 @@ public class memberDbase{
                 + "fName = ?, lName = ? "
                 + "pNumber = ?, cCard = ? "
                 + "uName = ?, admin = ?"
-                + "where id = ?";
+                + "where uid = ?";
         try{ //fName, lName, pNumber, cCard, uName, password, admin
             ps = connection.prepareStatement(UPDATE);
             ps.setString(1, member.getfName());
@@ -97,7 +97,7 @@ public class memberDbase{
             ps.setString(4, member.getcCard());
             ps.setString(5, member.getuName()); 
             ps.setString(6, member.getAdmin());
-            ps.setInt(7, member.getId());
+            ps.setInt(7, member.getUid());
             ps.executeUpdate();
         }catch (SQLException e){
             System.err.println(e);
@@ -123,7 +123,7 @@ public class memberDbase{
             rs = ps.executeQuery();
             while(rs.next()){
                 Member member = new Member();
-                member.setId(rs.getInt("id"));
+                member.setUid(rs.getInt("uid"));
                 member.setfName(rs.getString("fName"));
                 member.setlName(rs.getString("lName"));
                 member.setpNumber(rs.getString("pNumber"));
@@ -162,7 +162,7 @@ public class memberDbase{
             Member member = null;
             if(rs.next()){
                 member = new Member();
-                member.setId(rs.getInt("id"));
+                member.setUid(rs.getInt("uid"));
                 member.setfName(rs.getString("fName"));
                 member.setlName(rs.getString("lName"));
                 member.setpNumber(rs.getString("pNumber"));
