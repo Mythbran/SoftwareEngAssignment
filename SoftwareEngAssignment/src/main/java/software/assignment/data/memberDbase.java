@@ -19,6 +19,10 @@ public class memberDbase{
     //MAYBE SAME WITH CREDIT CARD NUMBERS... 
     //WHY NOT JUST HASH IT ALL AT THIS POINT AYYYYY ;) 
     //I'M WAY TOO TIRED AND HIGH FOR THIS SHIT 
+    //I KEEP GETTING A NULL POINTER EXCEPTION HERE
+    //NOT SURE WHY. HAS SOMETHING TODO WITH THE CONNECTION CLASS THOUGH
+    //BEEN A PROBLEM FOR A WHILE THAT I DIDN'T WANT TO TACKLE 
+    //FUCK ARRAYS AND POINTERS 
     public static void insert(Member member){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
