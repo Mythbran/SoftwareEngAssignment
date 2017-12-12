@@ -24,18 +24,18 @@ public class memberDbase{
     //BEEN A PROBLEM FOR A WHILE THAT I DIDN'T WANT TO TACKLE 
     //FUCK ARRAYS AND POINTERS 
     public static void insert(Member member){
-        //Connection pool = Connection.getInstance();
-        //java.sql.Connection connection = pool.getConnection();
-        PreparedStatement ps = null;   
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        int admin;
+
 
         // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         
         String INSERT = "INSERT INTO member "
-                + "(fName, lName, pNumber, cCard, uName, password, admin)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?";
-        
+                + "(fName, lName, pNumber, cCard, uName, password, admin) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+     
         try{
         ps = connection.prepareStatement(INSERT);
         ps.setString(1, member.getfName());
@@ -44,7 +44,14 @@ public class memberDbase{
         ps.setString(4, member.getcCard());
         ps.setString(5, member.getuName());
         ps.setString(6, member.getPassword());
-        ps.setString(7, member.getAdmin());
+        String adminTemp = member.getAdmin();
+        if(adminTemp == "yes"){
+            admin = 1;
+        }
+        else{
+            admin = 0;
+        }
+        ps.setInt(7, admin);
         
         ps.executeUpdate();
         
