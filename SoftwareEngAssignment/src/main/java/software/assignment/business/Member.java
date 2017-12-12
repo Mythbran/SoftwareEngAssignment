@@ -14,9 +14,7 @@ public class Member{
     private int uid = 0; 
     
     private String admin = "no";
-    
-    private boolean administrator = false;
-    
+        
     @NotNull (message = "Missing First Name")
     @Pattern(regexp = "([a-zA-Z'.,-]+\\s*)+", message = "Invalid first name")
     private String fName = "";
@@ -54,13 +52,7 @@ public class Member{
         this.admin = admin;
     }
   
-    public boolean isAdministrator() {
-        return administrator;
-    }
 
-    public void setAdministrator(boolean administrator) {
-        this.administrator = administrator;
-    }
     
     //ACCOUNT ID 
     public int getUid() {

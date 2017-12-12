@@ -159,6 +159,9 @@ public class MainServlet extends HttpServlet {
             case "/viewAll.do":{
                 view = "viewAll";
                 jspPath = "/WEB-INF/jsp/admin/";
+                
+                List<Member> members = memberDbase.selectAll();
+                request.setAttribute("members", members);
                 break;
             }
             
@@ -167,6 +170,8 @@ public class MainServlet extends HttpServlet {
             case "/delete.do":{
                 view = "delete";
                 jspPath = "WEB-INF/jsp/admin/";
+                memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
+                response.sendRedirect(response.encodeRedirectURL("viewAll.do"));
                 break;
             }
             

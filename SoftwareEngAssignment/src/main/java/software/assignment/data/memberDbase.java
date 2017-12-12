@@ -12,7 +12,7 @@ import software.assignment.business.Member;
 
 public class memberDbase{
     
-    //NEED TO TEST 
+    //TESTED AND WORKING **** :) :D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D FINALLY
     //WILL INSERT MEMBERS INTO THE MEMBER DATABASE 
     //WILL HAVE TO IMPLEMENT HASHING FOR THE PASSWORDS EVENTUALLY 
     //DON'T WANT THEM CLEARTEXT PASSWORDS NOW DO WE???? 
@@ -28,9 +28,6 @@ public class memberDbase{
         PreparedStatement ps = null;
         int admin;
 
-
-        // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
-        
         String INSERT = "INSERT INTO member "
                 + "(fName, lName, pNumber, cCard, uName, password, admin) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -44,13 +41,7 @@ public class memberDbase{
         ps.setString(5, member.getuName());
         ps.setString(6, member.getPassword());
         String adminTemp = member.getAdmin();
-        if(adminTemp == "yes"){
-            admin = 1;
-        }
-        else{
-            admin = 0;
-        }
-        ps.setInt(7, admin);
+        ps.setInt(7, 0);
         
         ps.executeUpdate();
         
@@ -60,7 +51,7 @@ public class memberDbase{
             
         } finally {
             DatabaseUtil.closePreparedStatement(ps);
-            //pool.freeConnection(connection);
+            pool.freeConnection(connection);
         }
               
     }
@@ -130,10 +121,12 @@ public class memberDbase{
         PreparedStatement ps = null;
         ResultSet rs = null;
         String SELECT = "select * from member";
+        
         try{
             ps = connection.prepareStatement(SELECT);
             rs = ps.executeQuery();
             while(rs.next()){
+                String admin= null;
                 Member member = new Member();
                 member.setUid(rs.getInt("uid"));
                 member.setfName(rs.getString("fName"));
@@ -141,7 +134,14 @@ public class memberDbase{
                 member.setpNumber(rs.getString("pNumber"));
                 member.setcCard(rs.getString("cCard"));    
                 member.setuName(rs.getString("uName")); 
-                member.setAdmin(rs.getString("admin"));                
+                int adminTemp = rs.getInt("admin");
+                if (adminTemp == 1){
+                    admin = "yes";
+                }
+                else{
+                    admin = "no";
+                }
+                member.setAdmin(admin);                
                 members.add(member);
             }
             
