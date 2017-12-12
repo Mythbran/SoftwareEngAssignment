@@ -4,17 +4,12 @@
 	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	 version="3.1">
-   <!-- <resource-ref>
-        <res-ref-name>jdbc/softwareeng</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-    </resource-ref>-->
     <servlet>
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>software.assignment.controller.MainServlet</servlet-class>
         <init-param>
             <param-name>greeting</param-name>
-            <param-value>Badass motherfucking vehicle rental system</param-value>
+            <param-value>vehicle rental system</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
