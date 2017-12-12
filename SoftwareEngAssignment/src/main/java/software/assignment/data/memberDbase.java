@@ -5,7 +5,6 @@ package software.assignment.data;
 import software.assignment.business.Member;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 public class memberDbase{
@@ -20,19 +19,19 @@ public class memberDbase{
                 + "VALUES (?, ?, ?, ?, ?, ?, ?";
         try{
             ps = connection.prepareStatement(INSERT);
-            ps.setString(1, getfName());
-            ps.setString(2, getlName());
-            ps.setString(3, getPNumber());
-            ps.setString(4, getCCard());
-            ps.setString(5, getUName());
-            String adminTemp = getAdmin();
+            ps.setString(1, member.getfName());
+            ps.setString(2, member.getlName());
+            ps.setString(3, member.getpNumber());
+            ps.setString(4, member.getcCard());
+            ps.setString(5, member.getuName());
+            String adminTemp = member.getAdmin();
             if(adminTemp == "yes"){
                 ps.setInt(6, 1);
             }
             else{
                 ps.setInt(6, 0);
             }
-            ps.setString(7, getPassword);
+            ps.setString(7, member.getPassword());
         } catch(SQLException e){
             System.err.println(e);
         } finally{
