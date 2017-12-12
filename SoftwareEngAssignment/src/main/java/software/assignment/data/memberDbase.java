@@ -24,9 +24,12 @@ public class memberDbase{
     //BEEN A PROBLEM FOR A WHILE THAT I DIDN'T WANT TO TACKLE 
     //FUCK ARRAYS AND POINTERS 
     public static void insert(Member member){
+        //Connection pool = Connection.getInstance();
+        //java.sql.Connection connection = pool.getConnection();
+        PreparedStatement ps = null;   
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
-        PreparedStatement ps = null;    
+
         // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         
         String INSERT = "INSERT INTO member "
@@ -51,7 +54,7 @@ public class memberDbase{
             
         } finally {
             DatabaseUtil.closePreparedStatement(ps);
-            pool.freeConnection(connection);
+            //pool.freeConnection(connection);
         }
               
     }

@@ -19,8 +19,11 @@ public class carDbase{
     //NEED TO TEST 
     //WILL INSERT CARS INTO THE CAR DATABASE 
     public static void insert(Car car){
-        Connection pool = Connection.getInstance();
-        java.sql.Connection connection = pool.getConnection();
+        //Connection pool = Connection.getInstance();
+        //java.sql.Connection connection = pool.getConnection();
+       /* Connection connection = Connection.getConnectionTest();
+
+        
         PreparedStatement ps = null;    
         // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         
@@ -44,7 +47,7 @@ public class carDbase{
             DatabaseUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
-              
+     */         
     }
     
     //NEEDS TESTING 
