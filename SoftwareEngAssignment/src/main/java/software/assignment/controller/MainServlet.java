@@ -27,6 +27,7 @@ public class MainServlet extends HttpServlet {
         String action = request.getServletPath();
         String jspPath;
         String view;
+        String showNext;
     
         switch (action) {
             
@@ -34,29 +35,29 @@ public class MainServlet extends HttpServlet {
             
             //MAIN WELCOME SCREEN 
             //WILL ACT AS A PORTAL TO EVERY OTHER WEBPAGE
-            case "/hello.do": {
-                    view = "hello";
+            case "/hello.do":{
                     jspPath = "/WEB-INF/jsp/general/";
+                    view = MemberController.hello(request);        
                     break;
-                }
-   
+            }
+            /*
             //IDK TBH HERE FOR TESTING PURPOSES WILL REPURPOSE LATER 
             case "/index.do": {
                 view = "index";
                 jspPath = "/WEB-INF/jsp/general/";
                 break;
             }
-                       
+                   */    
             //MAIN PAGE FOR RENTALS 
             //THIS IS THE MAIN WEBPAGE TO SHOW ALL VEHICLES AVAILABLE FOR RENTAL
             case "/rentals.do":{
-                view = "rentals";
                 jspPath = "/WEB-INF/jsp/general/";
+                view = MemberController.rentals(request);
                 break;
             }
             
             case "/login.do":{
-                view = "login";
+                view = MemberController.login(request);
                 jspPath = "WEB-INF/jsp/general/";
                 break;
             }
@@ -66,7 +67,7 @@ public class MainServlet extends HttpServlet {
             //THIS WILL SEND TO A PAGE THAT HANDLES MEMBER REGISTRATIONS
             //TAKES ALL REGISTRATIONS AND SENDS IT TO MEMBERCONFIRM CLASS
             case "/membership.do":{
-                view = "membership";
+                view = MemberController.membership(request);
                 jspPath = "/WEB-INF/jsp/member/";      
                 break;
             }
@@ -76,22 +77,8 @@ public class MainServlet extends HttpServlet {
             //SENDS THE CONFIRMED DATA TO THE SUBMIT METHOD 
             //THAT'S WHERE IT GETS SENT INTO THE DATABASE 
             case "/memberConfirm.do":{
-                view = "memberConfirm";
                 jspPath = "/WEB-INF/jsp/member/";
-                Member member = new Member();
-                member.setfName(request.getParameter("fName"));
-                member.setlName(request.getParameter("lName")); 
-                member.setpNumber(request.getParameter("pNumber"));
-                member.setcCard(request.getParameter("cCard"));
-                member.setuName(request.getParameter("uName"));
-                member.setAdmin(request.getParameter("admin"));
-                member.setPassword(request.getParameter("password"));
-                
-                //THIS IS WHERE TO DO ALL THE VALIDATION SHIT 
-                //NEED TO PROGRAM THAT IN LATER............
-                
-                HttpSession session = request.getSession();
-                session.setAttribute("member", member);
+                view = MemberController.memberConfirm(request);
                 break;
             }
             
@@ -100,18 +87,11 @@ public class MainServlet extends HttpServlet {
             //AND DATABASES FILL UP
             //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
             case "/memberSubmit.do":{
-                HttpSession session = request.getSession(false);
-                if(session.getAttribute("member")==null){
-                    
-                }else{
-                    Member member = (Member)session.getAttribute("member");
-                    memberDbase.insert(member);
-                    
-                    response.sendRedirect(response.encodeRedirectURL("hello.do"));
-                    return;
-                }
+                jspPath = "/WEB-INF/jsp/member/";
+                view = MemberController.memberSubmit(request);
+                break;
             }
-            
+            /*
             //EDIT MEMBER
             //THIS WILL ALLOW SIGNED IN MEMBERS TO EDIT THEIR INFORMATION 
             //WILL ONLY BE AVAILABLE IF SIGNED IN 
@@ -175,18 +155,21 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
-            
+            */
 
             default: {
                 response.sendError(404);
                 return;
             }
         }
-    
+         
+        if(view.startsWith("redirect:")){
+            response.sendRedirect(response.encodeRedirectURL(view.substring(9)));
+        }else {
+            request.getRequestDispatcher(jspPath + view + ".jsp").forward(request, response);
+        }
         
     
-        request.getRequestDispatcher(jspPath + view + ".jsp").forward(request, response);
-
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
