@@ -7,6 +7,7 @@ package software.assignment.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -143,8 +144,83 @@ public class MemberController {
         
     }
     
+    //EDIT MEMBER CODE
+    //THERE IS PERMISSIONS SET ON THIS FUNCTION 
+    //MUST PROGRAM THE PERMISSIONS PROPERLY
+    public static String editMember(HttpServletRequest request){
+        if(request.isUserInRole("member")){
+            //Will have to pull the uid from the signed in user for this
+            return "editMember";
+        }
+        else if(request.isUserInRole("administrator")){
+            //will have to pull the account the administrator clicks for this
+            return"editMember";
+        }
+        else{
+            return "error";
+        }
+        
+    }
+    
+    //ADMIN PORTAL CODE 
+    //NEED TO CODE PERMISSIONS
+    public static String adminPortal(HttpServletRequest request){
+        if(request.isUserInRole("administrator")){
+            return "adminPortal";
+        }else{
+            return "error";
+        }
+    }
     
     
+    //ADD CAR CODE
+    public static String addCar(HttpServletRequest request){
+        if (request.isUserInRole("administrator")){
+            return "addCar";
+        }else{
+            return "error";
+        }        
+    }
+    
+    //CONFIRM CAR FUNCTION 
+    //INPUT IS PASSED FROM ADD CAR ROLE 
+    //USE THIS TO VERIFY THAT ALL CAR DATA IN INPUTTED CORRECTLY 
+    public static String confirmCar(HttpServletRequest request){
+        if(request.isUserInRole("administrator")){
+            return"confirmCar";
+        }else{
+            return "error";
+        }
+    }
+    
+    //EDIT CAR FUNCTION 
+    public static String editCar(HttpServletRequest request){
+        if(request.isUserInRole("administrator")){
+            return "editCar";
+        }else{
+            return "error";
+        }
+    }
+
+
+    public static String viewAll(HttpServletRequest request){
+        if(request.isUserInRole("administrator")){
+            List<Member> members = memberDbase.selectAll();
+            request.setAttribute("members", members);
+            return "viewAll";
+        }else{
+            return "error";
+        }
+    }
+    
+    public static String delete(HttpServletRequest request){
+        if(request.isUserInRole("administrator")){
+            memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
+            return "redirect:viewAll.do";
+        }else{
+            return "error";
+        }
+    }
 
     
 

@@ -91,13 +91,13 @@ public class MainServlet extends HttpServlet {
                 view = MemberController.memberSubmit(request);
                 break;
             }
-            /*
+            
             //EDIT MEMBER
             //THIS WILL ALLOW SIGNED IN MEMBERS TO EDIT THEIR INFORMATION 
             //WILL ONLY BE AVAILABLE IF SIGNED IN 
             //WILL ONLY ALLOW THE SIGNED IN MEMBER TO EDIT THEIR OWN INFO
             case "/editMember.do":{
-                view = "editMember";
+                view = MemberController.editMember(request);
                 jspPath= "/WEB-INF/jsp/member/";
                 break;
             }
@@ -107,7 +107,7 @@ public class MainServlet extends HttpServlet {
             //NEEDS MUCH MORE WORK 
             //WILL SEND TO THE MAIN PAGE HANDLING ALL ADMIN RELATED THINGS
             case "/adminPortal.do":{
-                view = "adminPortal";
+                view = MemberController.adminPortal(request);
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
@@ -116,19 +116,24 @@ public class MainServlet extends HttpServlet {
             //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO ADD CARS TO THE DATABASE 
             case "/addCar.do":{
-                view = "addCar";
+                view = MemberController.addCar(request);
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
             
             //CONFIRM CAR   
-            //ADDCAR.DO WILL PASS TO THIS CLASS 
-            
+            //ADDCAR.DO WILL PASS TO THIS CLASS             
+            case "/confirmCar.do":{
+                view = MemberController.confirmCar(request);
+                jspPath = "/WEB-INF/jsp/admin/";
+                break;
+            }
+
             //EDIT CAR
             //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO EDIT CARS INCLUDING DELETING FROM DATABASE
             case "/editCar.do":{
-                view = "editCar";
+                view = MemberController.editCar(request);
                 jspPath = "WEB-INF/jsp/admin/";
                 break; 
             }
@@ -137,25 +142,21 @@ public class MainServlet extends HttpServlet {
             //THIS WILL ALLOW ADMINS TO VIEW MEMBERS REGISTERED 
             //ADMINS WILL BE ALLOWED TO SET MEMBERS AS ADMINS
             case "/viewAll.do":{
-                view = "viewAll";
+                view = MemberController.viewAll(request);
                 jspPath = "/WEB-INF/jsp/admin/";
-                
-                List<Member> members = memberDbase.selectAll();
-                request.setAttribute("members", members);
                 break;
             }
             
             //DELETE MEMBER
             //BASED ON UID 
             case "/delete.do":{
-                view = "delete";
+                view = MemberController.delete(request);
                 jspPath = "WEB-INF/jsp/admin/";
-                memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
-                response.sendRedirect(response.encodeRedirectURL("viewAll.do"));
+                //memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
+                //response.sendRedirect(response.encodeRedirectURL("viewAll.do"));
                 break;
             }
             
-            */
 
             default: {
                 response.sendError(404);
