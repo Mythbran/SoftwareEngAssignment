@@ -46,15 +46,15 @@ public class MemberController {
         //IF MEMBER, WILL GIVE ACCESS TO DIFFERENT COUPONS
         //IF ADMINSTRATOR, WILL GIVE ACCESS TO EDIT THE CARS 
         //IF NOT JUST ACCESS TO VIEW 
-        if(request.isUserInRole("member")){
-            return "mRentals";
-        }
-        else if(request.isUserInRole("administrator")){
-            return "aRentals";
-        }
-        else{
+        //if(request.isUserInRole("member")){
+          //  return "mRentals";
+        //}
+        //else if(request.isUserInRole("administrator")){
+          //  return "aRentals";
+        //}
+        //else{
             return "rentals";            
-        }
+        //}
 
     }
     
@@ -73,7 +73,7 @@ public class MemberController {
             return "adminPortal";
         }
         else{
-            return "errorLogin";            
+            return "login";            
         }
         
         
@@ -148,7 +148,7 @@ public class MemberController {
     //THERE IS PERMISSIONS SET ON THIS FUNCTION 
     //MUST PROGRAM THE PERMISSIONS PROPERLY
     public static String editMember(HttpServletRequest request){
-        if(request.isUserInRole("member")){
+       /* if(request.isUserInRole("member")){
             //Will have to pull the uid from the signed in user for this
             return "editMember";
         }
@@ -158,68 +158,73 @@ public class MemberController {
         }
         else{
             return "error";
-        }
+        }*/
+       return "editMember";
         
     }
     
     //ADMIN PORTAL CODE 
     //NEED TO CODE PERMISSIONS
     public static String adminPortal(HttpServletRequest request){
-        if(request.isUserInRole("administrator")){
+        /*if(request.isUserInRole("administrator")){
             return "adminPortal";
         }else{
             return "error";
-        }
+        }*/
+        return "error";
     }
     
     
     //ADD CAR CODE
     public static String addCar(HttpServletRequest request){
-        if (request.isUserInRole("administrator")){
+        /*if (request.isUserInRole("administrator")){
             return "addCar";
         }else{
             return "error";
-        }        
+        } */
+        return "addCar";
     }
     
     //CONFIRM CAR FUNCTION 
     //INPUT IS PASSED FROM ADD CAR ROLE 
     //USE THIS TO VERIFY THAT ALL CAR DATA IN INPUTTED CORRECTLY 
     public static String confirmCar(HttpServletRequest request){
-        if(request.isUserInRole("administrator")){
+        /*if(request.isUserInRole("administrator")){
             return"confirmCar";
         }else{
             return "error";
-        }
+        }*/
+        return "confirmCar";
     }
     
     //EDIT CAR FUNCTION 
     public static String editCar(HttpServletRequest request){
-        if(request.isUserInRole("administrator")){
+        /*if(request.isUserInRole("administrator")){
             return "editCar";
         }else{
             return "error";
-        }
+        }*/
+        return "editCar";
     }
 
 
     public static String viewAll(HttpServletRequest request){
-        if(request.isUserInRole("administrator")){
+        //if(request.isUserInRole("administrator")){
             List<Member> members = memberDbase.selectAll();
             request.setAttribute("members", members);
             return "viewAll";
-        }else{
-            return "error";
-        }
+        //}else{
+          //  return "error";
+        //}
     }
     
     public static String delete(HttpServletRequest request){
-        if(request.isUserInRole("administrator")){
+        //if(request.isUserInRole("administrator")){
             memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
             return "redirect:viewAll.do";
-        }else{
-            return "error";
-        }
+        //}else{
+          //  return "error";
+        //}
     }
 
     
