@@ -119,6 +119,9 @@ public class MainServlet extends HttpServlet {
             case "/editMember.do":{
                 view = "editMember";
                 jspPath= "/WEB-INF/jsp/member/";
+                Member member = new Member();
+                memberDbase.selectOne(Integer.parseInt(request.getParameter("uid")));
+                
                 break;
             }
             //ADMIN PAGES  
@@ -168,11 +171,9 @@ public class MainServlet extends HttpServlet {
             //DELETE MEMBER
             //BASED ON UID 
             case "/delete.do":{
-                view = "delete";
-                jspPath = "WEB-INF/jsp/admin/";
                 memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
                 response.sendRedirect(response.encodeRedirectURL("viewAll.do"));
-                break;
+                return;
             }
             
             
