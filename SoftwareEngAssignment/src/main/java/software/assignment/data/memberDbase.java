@@ -62,8 +62,9 @@ public class memberDbase{
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE * from member where uid="+uid;
+        String DELETE = "DELETE * from member where uid = " + uid;
         try{
+            System.out.println(uid);
             ps = connection.prepareStatement(DELETE);
             ps.setInt(1, uid);
             ps.executeUpdate();

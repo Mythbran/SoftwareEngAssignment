@@ -38,7 +38,7 @@
                             <td><c:out value="${row.uName}"/></td>   
                             <td><c:out value="${row.admin}"/></td>
                             <td><a href="${update}">Update</a></td>
-                                <c:url value="update.do" var="update">
+                                <c:url value="editMember.do" var="update">
                                     <c:param name="uid" value="${row.uid}"/>
                                 </c:url>
                             <td><a href="${delete}">Delete</a></td>

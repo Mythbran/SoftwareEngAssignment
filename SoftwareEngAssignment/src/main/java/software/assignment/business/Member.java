@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 public class Member{
     
     //INSTANTIATING ALL VARIABLES 
-    private int uid = 0; 
+    private int uid; 
     
     private String admin = "no";
         
