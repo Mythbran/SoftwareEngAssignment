@@ -23,7 +23,8 @@
             <h1>Editing Member</h1>
             <form method="post" action="<c:url value="confirmEdit.do"/>"/>
                 <input type="hidden" name="uid" value="${member.uid}"/>
-
+                <input type="hidden" name="password" value="${member.password}"/>
+                <input type="hidden" name="uName" value="${member.uName}"/>
                 <h2>Edit your information: </h2>
                 <p>
                     <label for="first">First Name:</label>
@@ -46,12 +47,10 @@
                 </p>
                 <p>
                     <label>Admin: </label>
-                    <input id="admin" type="checkbox" name="admin" value="<c:out value="${member.admin}"/>" required/>            
+                    <input id="admin" type="checkbox" name="admin" value="<c:out value="${member.admin}"/>"/>            
                 </p>
                                 
-                <input type="hidden" name="password" value="${member.password}"/>
-                
-                <input type="hidden" name="uName" value="${member.uName}"/>
+
                
                 <p>
                     <label>&nbsp;</label>

@@ -243,6 +243,7 @@ public class MemberController {
             member.setcCard(request.getParameter("cCard"));
             String adminT = request.getParameter("admin");
             member.setAdmin((adminT == null) ? "no" : "yes");
+            member.setuName(request.getParameter("uName"));
             member.setPassword(request.getParameter("password"));
             
             memberDbase.update(member);

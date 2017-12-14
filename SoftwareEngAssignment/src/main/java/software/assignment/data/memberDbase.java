@@ -87,10 +87,10 @@ public class memberDbase{
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String UPDATE = "update member set"
-                + "fName = ?, lName = ? "
-                + "pNumber = ?, cCard = ? "
-                + "uName = ?, admin = ?"
+        String UPDATE = "update member set "
+                + "fName = ?, lName = ?, "
+                + "pNumber = ?, cCard = ?, "
+                + "uName = ?, admin = ?, password = ? "
                 + "where uid = ?";
         try{ //fName, lName, pNumber, cCard, uName, password, admin
             ps = connection.prepareStatement(UPDATE);
@@ -99,8 +99,19 @@ public class memberDbase{
             ps.setString(3, member.getpNumber());
             ps.setString(4, member.getcCard());
             ps.setString(5, member.getuName()); 
-            ps.setString(6, member.getAdmin());
-            ps.setInt(7, member.getUid());
+            String adminT = member.getAdmin();
+            int adminI;
+            if (adminT.equals("yes")){
+                adminI = 1; 
+            }else{
+                adminI = 0;
+            }
+            ps.setInt(6, adminI);
+            ps.setString(7, member.getPassword());
+            ps.setInt(8, member.getUid());           
+            //NEED TO GET THE ADMIN CHANGED TO 1 AND 0 FROM STRING .... 
+            
+        ps.setInt(7, 0);
             ps.executeUpdate();
         }catch (SQLException e){
             System.err.println(e);
