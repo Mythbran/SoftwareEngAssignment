@@ -33,8 +33,8 @@
             </p>  
 
             <p>
-                <form action="<c:url value="editMember.do"/>" method="post">
-                    <input type="submit" value="Edit your information" name="editMember" />
+                <form action="<c:url value="memberPortal.do"/>" method="post">
+                    <input type="submit" value="Member Portal" name="memberPortal" />
                 </form>
             </p>  
             <p>

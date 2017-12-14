@@ -90,15 +90,14 @@ public class memberDbase{
         String UPDATE = "update member set "
                 + "fName = ?, lName = ?, "
                 + "pNumber = ?, cCard = ?, "
-                + "uName = ?, admin = ?, password = ? "
+                + "admin = ? "
                 + "where uid = ?";
         try{ //fName, lName, pNumber, cCard, uName, password, admin
             ps = connection.prepareStatement(UPDATE);
             ps.setString(1, member.getfName());
             ps.setString(2, member.getlName());
             ps.setString(3, member.getpNumber());
-            ps.setString(4, member.getcCard());
-            ps.setString(5, member.getuName()); 
+            ps.setString(4, member.getcCard()); 
             String adminT = member.getAdmin();
             int adminI;
             if (adminT.equals("yes")){
@@ -106,12 +105,8 @@ public class memberDbase{
             }else{
                 adminI = 0;
             }
-            ps.setInt(6, adminI);
-            ps.setString(7, member.getPassword());
-            ps.setInt(8, member.getUid());           
-            //NEED TO GET THE ADMIN CHANGED TO 1 AND 0 FROM STRING .... 
-            
-        ps.setInt(7, 0);
+            ps.setInt(5, adminI);
+            ps.setInt(6, member.getUid());                       
             ps.executeUpdate();
         }catch (SQLException e){
             System.err.println(e);

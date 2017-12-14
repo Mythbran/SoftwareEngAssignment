@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update data</title>
+        <title>Update Member</title>
     </head>      
         <main>
             <c:if test="${not empty errors}">
@@ -20,12 +20,9 @@
                     </c:forEach>
                 </ul>
             </c:if>
-            <h1>Editing Member</h1>
+            <h1>Update Member Information</h1>
             <form method="post" action="<c:url value="confirmEdit.do"/>"/>
                 <input type="hidden" name="uid" value="${member.uid}"/>
-                <input type="hidden" name="password" value="${member.password}"/>
-                <input type="hidden" name="uName" value="${member.uName}"/>
-                <h2>Edit your information: </h2>
                 <p>
                     <label for="first">First Name:</label>
                     <input id="first" type="text" name="fName" value="<c:out value="${member.fName}"/>" required/>
@@ -47,21 +44,21 @@
                 </p>
                 <p>
                     <label>Admin: </label>
-                    <input id="admin" type="checkbox" name="admin" value="<c:out value="${member.admin}"/>"/>            
+                    <input id="admin" type="checkbox" name="admin" value="<c:out value="${member.admin}"/>" />            
                 </p>
                                 
 
                
                 <p>
                     <label>&nbsp;</label>
-                    <input type="reset" value="Clear"/>
-                    <input type="submit" value="Send"/>
+                    <input type="submit" value="Send"/>            
+                    <form action="<c:url value="viewAll.do"/>" method="post"> 
+                        <input type="submit" value="View All" />
+                    </form>
                 </p>
             </form>
                     
-            <form action="<c:url value="displayAll.do"/>" method="post"> 
-                <input type="submit" value="List All" />
-            </form>
+
         
                 
                    

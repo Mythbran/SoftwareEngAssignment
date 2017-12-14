@@ -144,6 +144,14 @@ public class MemberController {
         
     }
     
+    //GO TO MEMBER PORTAL
+    //HAVE TO REDIRECT TO LOGIN IF NOBODY IS CURRENTLY LOGGED IN 
+    //UHH.... YEA NEED TO PROGRAM STUFF FOR ACCESS CONTROL
+    public static String memberPortal(HttpServletRequest request){
+        
+        return "memberPortal";
+    }
+    
     //ADMIN PAGES
     
     //EDIT MEMBER CODE
@@ -242,10 +250,7 @@ public class MemberController {
             member.setpNumber(request.getParameter("pNumber"));
             member.setcCard(request.getParameter("cCard"));
             String adminT = request.getParameter("admin");
-            member.setAdmin((adminT == null) ? "no" : "yes");
-            member.setuName(request.getParameter("uName"));
-            member.setPassword(request.getParameter("password"));
-            
+            member.setAdmin((adminT == null) ? "no" : "yes");           
             memberDbase.update(member);
             return "redirect:viewAll.do";
             

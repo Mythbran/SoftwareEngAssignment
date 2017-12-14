@@ -30,6 +30,11 @@
                     <input type="submit" value="Update Cars" name="updateCar" />
                 </form>
             </p>
+            <p>
+                <form action="<c:url value="hello.do"/>" method="post">
+                    <input type="submit" value="Home" name="Home" />
+                </form>
+            </p>
         </main>
     </body>
 

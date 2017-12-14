@@ -25,9 +25,8 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getServletPath();
-        String jspPath;
-        String view;
-        String showNext;
+        String jspPath = null;
+        String view = null;
     
         switch (action) {
             
@@ -76,6 +75,7 @@ public class MainServlet extends HttpServlet {
             //TAKES INPUT FROM MEMBERSHIP CLASS
             //SENDS THE CONFIRMED DATA TO THE SUBMIT METHOD 
             //THAT'S WHERE IT GETS SENT INTO THE DATABASE 
+            //FOR WHEN ADDING NOT EDITING 
             case "/memberConfirm.do":{
                 jspPath = "/WEB-INF/jsp/member/";
                 view = MemberController.memberConfirm(request);
@@ -87,8 +87,18 @@ public class MainServlet extends HttpServlet {
             //AND DATABASES FILL UP
             //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
             case "/memberSubmit.do":{
-                jspPath = "/WEB-INF/jsp/member/";
+                
                 view = MemberController.memberSubmit(request);
+                break;
+            }
+            
+            //MEMBER PORTAL
+            //THIS WILL HOLD THE MEMBER EDIT PAGE AND SHIT
+            //IDK WHAT ELSE WOULD BE IN HERE 
+            //MEH WHO CARES 
+            case "/memberPortal.do":{
+                jspPath = "/WEB-INF/jsp/member/";
+                view = MemberController.memberPortal(request);
                 break;
             }
             
@@ -173,7 +183,7 @@ public class MainServlet extends HttpServlet {
             //TIME CONSTRAINTS :( 
             case "/editMember.do":{
                 view = MemberController.editMember(request);
-                jspPath= "/WEB-INF/jsp/member/";
+                jspPath= "/WEB-INF/jsp/admin/";
                 break;
             }
             
