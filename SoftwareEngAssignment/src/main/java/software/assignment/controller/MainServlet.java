@@ -130,6 +130,15 @@ public class MainServlet extends HttpServlet {
                 break; 
             }
             
+            case "/editOrder.do":{
+                view = "editOrder";
+                jspPath= "/WEB-INF/jsp/member/";
+                Order order = new Order();
+                orderDbase.selectOne(Integer.parseInt(request.getParameter("oid")));
+                
+                break;
+            }    
+                
             //VIEW ALL MEMBERS
             //THIS WILL ALLOW ADMINS TO VIEW MEMBERS REGISTERED 
             //ADMINS WILL BE ALLOWED TO SET MEMBERS AS ADMINS
