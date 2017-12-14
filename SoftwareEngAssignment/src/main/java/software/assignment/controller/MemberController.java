@@ -163,7 +163,6 @@ public class MemberController {
         }*/
      
            int uid = Integer.parseInt(request.getParameter("uid"));
-           uid += 1;
            Member member = memberDbase.selectOne(uid);
            if(member != null){
                request.setAttribute("member", member);

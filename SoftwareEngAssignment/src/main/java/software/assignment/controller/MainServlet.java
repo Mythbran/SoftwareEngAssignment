@@ -152,8 +152,6 @@ public class MainServlet extends HttpServlet {
             case "/delete.do":{
                 view = MemberController.delete(request);
                 jspPath = "WEB-INF/jsp/admin/";
-                //memberDbase.deleteOne(Integer.parseInt(request.getParameter("uid")));
-                //response.sendRedirect(response.encodeRedirectURL("viewAll.do"));
                 break;
 
             }

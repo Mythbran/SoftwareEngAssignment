@@ -62,9 +62,8 @@ public class memberDbase{
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE * from member where uid = " + uid;
+        String DELETE = "DELETE from member where uid = ?";
         try{
-            System.out.println(uid);
             ps = connection.prepareStatement(DELETE);
             ps.setInt(1, uid);
             ps.executeUpdate();
@@ -161,7 +160,6 @@ public class memberDbase{
     //THIS WILL SELECT ONE CAR
     //MAIN USE IS WHEN EDITING CARS FOR ADMINS 
     public static Member selectOne(int uid){
-        
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
