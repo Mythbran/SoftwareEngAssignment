@@ -144,6 +144,8 @@ public class MemberController {
         
     }
     
+    //ADMIN PAGES
+    
     //EDIT MEMBER CODE
     //THERE IS PERMISSIONS SET ON THIS FUNCTION 
     //MUST PROGRAM THE PERMISSIONS PROPERLY
@@ -159,7 +161,21 @@ public class MemberController {
         else{
             return "error";
         }*/
-       return "editMember";
+     
+           int uid = Integer.parseInt(request.getParameter("uid"));
+           uid += 1;
+           Member member = memberDbase.selectOne(uid);
+           if(member != null){
+               request.setAttribute("member", member);
+               return "editMember";
+               
+           }
+           else{
+                   return "redirect:viewAll.do";
+           }
+      
+       //memberDbase.selectOne("uid");
+       //return "editMember";
         
     }
     
@@ -171,7 +187,7 @@ public class MemberController {
         }else{
             return "error";
         }*/
-        return "error";
+        return "adminPortal";
     }
     
     
