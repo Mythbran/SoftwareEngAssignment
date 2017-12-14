@@ -21,8 +21,9 @@
                 </ul>
             </c:if>
             <h1>Editing Member</h1>
-            <form method="post" action="<c:url value="update.do"/>"/>
+            <form method="post" action="<c:url value="confirmEdit.do"/>"/>
                 <input type="hidden" name="uid" value="${member.uid}"/>
+
                 <h2>Edit your information: </h2>
                 <p>
                     <label for="first">First Name:</label>
@@ -36,18 +37,22 @@
                      
                 </p>
                 <p>
-                    <label for="pNumber">Phone Number</label>
+                    <label for="pNumber">Phone Number: </label>
                     <input id="pNumber" type="text" name="pNumber" value="<c:out value="${member.pNumber}"/>" required/>
                 </p>
                 <p>
-                    <label for="cCard">Credit Card</label>
+                    <label for="cCard">Credit Card: </label>
                     <input id="cCard" type="text" name="cCard" value="<c:out value="${member.cCard}"/>" required/>
                 </p>
                 <p>
-                    <label>Admin</label>
-                    <input id="admin" type="text" name="admin" value="<c:out value="${member.admin}"/>" required/>            
+                    <label>Admin: </label>
+                    <input id="admin" type="checkbox" name="admin" value="<c:out value="${member.admin}"/>" required/>            
                 </p>
-
+                                
+                <input type="hidden" name="password" value="${member.password}"/>
+                
+                <input type="hidden" name="uName" value="${member.uName}"/>
+               
                 <p>
                     <label>&nbsp;</label>
                     <input type="reset" value="Clear"/>

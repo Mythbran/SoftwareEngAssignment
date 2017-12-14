@@ -92,17 +92,9 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
-            //EDIT MEMBER
-            //THIS WILL ALLOW SIGNED IN MEMBERS TO EDIT THEIR INFORMATION 
-            //WILL ONLY BE AVAILABLE IF SIGNED IN 
-            //WILL ONLY ALLOW THE SIGNED IN MEMBER TO EDIT THEIR OWN INFO
-            case "/editMember.do":{
-                view = MemberController.editMember(request);
-                jspPath= "/WEB-INF/jsp/member/";
-                break;
-            }
+
             //ADMIN PAGES  
-                       
+                                          
             //ADMIN PORTAL 
             //NEEDS MUCH MORE WORK 
             //WILL SEND TO THE MAIN PAGE HANDLING ALL ADMIN RELATED THINGS
@@ -154,6 +146,26 @@ public class MainServlet extends HttpServlet {
                 jspPath = "WEB-INF/jsp/admin/";
                 break;
 
+            }
+            
+            //WHEN ADMINS EDIT MEMBERS 
+            case "/confirmEdit.do":{
+                view = MemberController.confirmEdit(request);
+                jspPath="/WEB-INF/jsp/admin";
+                break;
+            }
+            
+            //EDIT MEMBER
+            //THIS WILL ALLOW SIGNED IN MEMBERS TO EDIT THEIR INFORMATION 
+            //WILL ONLY BE AVAILABLE IF SIGNED IN 
+            //WILL ONLY ALLOW THE SIGNED IN MEMBER TO EDIT THEIR OWN INFO
+            
+            //EDIT : WILL ONLY BE AVAILABLE TO ADMIN
+            //TIME CONSTRAINTS :( 
+            case "/editMember.do":{
+                view = MemberController.editMember(request);
+                jspPath= "/WEB-INF/jsp/member/";
+                break;
             }
             
 

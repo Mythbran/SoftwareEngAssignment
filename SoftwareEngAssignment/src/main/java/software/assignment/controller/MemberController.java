@@ -190,16 +190,6 @@ public class MemberController {
     }
     
     
-    //ADD CAR CODE
-    public static String addCar(HttpServletRequest request){
-        /*if (request.isUserInRole("administrator")){
-            return "addCar";
-        }else{
-            return "error";
-        } */
-        return "addCar";
-    }
-    
     //CONFIRM CAR FUNCTION 
     //INPUT IS PASSED FROM ADD CAR ROLE 
     //USE THIS TO VERIFY THAT ALL CAR DATA IN INPUTTED CORRECTLY 
@@ -240,6 +230,34 @@ public class MemberController {
         //}else{
           //  return "error";
         //}
+    }
+
+    public static String confirmEdit(HttpServletRequest request) {
+        Member member = new Member();
+        
+        try{
+            member.setUid(Integer.parseInt(request.getParameter("uid")));
+            member.setfName(request.getParameter("fName"));
+            member.setlName(request.getParameter("lName"));
+            member.setpNumber(request.getParameter("pNumber"));
+            member.setcCard(request.getParameter("cCard"));
+            String adminT = request.getParameter("admin");
+            member.setAdmin((adminT == null) ? "no" : "yes");
+            member.setPassword(request.getParameter("password"));
+            
+            memberDbase.update(member);
+            return "redirect:viewAll.do";
+            
+        }catch(NumberFormatException e){
+            
+        }
+        memberDbase.update(member);    
+        
+        return"redirect:viewAll.do";
+    }
+
+    static String addCar(HttpServletRequest request) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
