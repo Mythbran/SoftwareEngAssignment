@@ -20,7 +20,7 @@
             </form>
         </p>
         <p>
-            <form action="<c:url value="addOrder.do"/>" method="post">
+            <form action="<c:url value="rentals.do"/>" method="post">
                 <input type="submit" value="Place an Order" name="addOrder" />
             </form>
                 <!-- needs to be coded in -->
