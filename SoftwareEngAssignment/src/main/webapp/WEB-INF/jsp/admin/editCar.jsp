@@ -21,7 +21,7 @@
             </c:if>
             <h1>Update Car Information</h1>
             <form method="post" action="<c:url value="confirmCarEdit.do"/>"/>
-                <input type="hidden" name="uid" value="${car.id}"/>
+                <input type="hidden" name="id" value="${car.id}"/>
                 <p>
                     <label for="make">Car Make:</label>
                     <input id="make" type="text" name="make" value="<c:out value="${car.make}"/>" required/>
