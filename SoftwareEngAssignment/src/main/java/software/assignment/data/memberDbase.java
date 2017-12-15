@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import software.assignment.business.Member;
+import software.assignment.util.Encryption;
 
 public class memberDbase{
     
@@ -39,7 +40,8 @@ public class memberDbase{
         ps.setString(3, member.getpNumber());
         ps.setString(4, member.getcCard());
         ps.setString(5, member.getuName());
-        ps.setString(6, member.getPassword());
+        String passT = Encryption.encode(member.getPassword());
+        ps.setString(6, passT);
         String adminTemp = member.getAdmin();
         ps.setInt(7, 0);
         
@@ -243,7 +245,8 @@ public class memberDbase{
             while(rs.next()){
                 userPass = rs.getString("password");
             }
-            if(userPass.equals(password)){
+            
+            if(Encryption.match(password, userPass)){
                 check = true;
             }else{
                 check = false;

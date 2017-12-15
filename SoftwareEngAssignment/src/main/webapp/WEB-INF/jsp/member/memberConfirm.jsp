@@ -36,14 +36,12 @@
             </p>
             
             <p>
-                <label>Password: </label>
-                <span class ="output"><c:out value="${member.password}"/></span>
+                <label>Password: Not gonna show this obviously</label>
+                <input type="hidden" name="password" value="${member.password}"/>
             </p>
+             
+            <input type="hidden" name="admin" value="${member.admin}"/>
             
-            <p>
-                <label>admin:  </label>
-                <span class ="output"><c:out value="${member.admin}"/></span>
-            </p>
             
             <form method="post" action="<c:url value="memberSubmit.do"/>">
                 <input type="submit" value="Submit"/>
