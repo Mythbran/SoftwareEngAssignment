@@ -127,8 +127,21 @@ public class MainServlet extends HttpServlet {
                 view = MainController.memberConfirmEdit(request);
                 break;
             }            
-            
+            //MORE TESTING
+            case "/addOrder.do":{
+                view = MainController.addOrder(request);
+                jspPath = "/WEB-INF/jsp/member/";
 
+                break;
+            }
+            
+            //TESTING THIS RN
+            case "/submitOrder.do":{
+                 view = MainController.submitOrder(request);
+                jspPath = "/WEB-INF/jsp/member/";
+                
+                break;
+            }
             //ADMIN PAGES  
                                           
             //ADMIN PORTAL 
