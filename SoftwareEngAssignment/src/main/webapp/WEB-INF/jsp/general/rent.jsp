@@ -21,7 +21,7 @@
                         <th>Price</th>
                         <th>Availability</th>
                         <th>Location</th>
-                        <th colspan="1"> Confirm Rent </th>
+                        <th colspan="1"> Confirm </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,10 @@
                             <td><c:out value="${car.availability}"/></td>
                             <td><c:out value="${car.location}"/></td>   
                             
-                            <input type="hidden" name="id" value="${car.id}"/>
+                            <c:url value="placeOrder.do" var="placeOrder">
+                                <c:param name="id" value="${car.id}"/>                                   
+                            </c:url>                          
+                            <td><a href="${placeOrder}">Place Order</a></td>       
                         </tr>
                 </tbody>
             </table>
