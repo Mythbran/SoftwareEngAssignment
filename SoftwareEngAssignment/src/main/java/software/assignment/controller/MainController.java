@@ -54,8 +54,13 @@ public class MainController {
           //  return "aRentals";
         //}
         //else{
-            return "rentals";            
+                        
         //}
+        
+            List<Car> cars = carDbase.selectAll();
+            request.setAttribute("cars", cars);
+            return "rentals";     
+        
 
     }
     
