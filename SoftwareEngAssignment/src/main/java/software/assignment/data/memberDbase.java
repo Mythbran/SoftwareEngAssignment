@@ -205,16 +205,16 @@ public class memberDbase{
             ps.setInt(1, uid);
             rs = ps.executeQuery();
             Member member = null;
-            
-            member = new Member();
-            member.setUid(rs.getInt("uid"));
-            member.setfName(rs.getString("fName"));
-            member.setlName(rs.getString("lName"));
-            member.setpNumber(rs.getString("pNumber"));
-            member.setcCard(rs.getString("cCard"));    
-            member.setuName(rs.getString("uName")); 
-            member.setAdmin(rs.getString("admin"));                
-            
+            while(rs.next()){
+                member = new Member();
+                member.setUid(rs.getInt("uid"));
+                member.setfName(rs.getString("fName"));
+                member.setlName(rs.getString("lName"));
+                member.setpNumber(rs.getString("pNumber"));
+                member.setcCard(rs.getString("cCard"));    
+                member.setuName(rs.getString("uName")); 
+                member.setAdmin(rs.getString("admin"));                
+            }
             return member;
             
         }catch (SQLException e){
@@ -227,33 +227,33 @@ public class memberDbase{
         }
     }   
     
-    public static String passRetrieve(String uName, String password){
+    public static boolean passRetrieve(String uName, String password){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String userPass = null;
-        String check = "false"; 
+        boolean check = false; 
         
         String SELECT = "select password from member where uName = ?";
         try{          
             ps = connection.prepareStatement(SELECT);
             ps.setString(1, uName);
             rs = ps.executeQuery();
-
-            userPass = rs.getString("password");
-           
-            if(userPass == password){
-                check = "true";
+            while(rs.next()){
+                userPass = rs.getString("password");
+            }
+            if(userPass.equals(password)){
+                check = true;
             }else{
-                check = "false";
+                check = false;
             }
             
             return check;        
         
         } catch(SQLException e){
             System.err.println(e);
-            return "false";
+            return false;
         }finally{ 
             DatabaseUtil.closeResultSet(rs);
             DatabaseUtil.closePreparedStatement(ps);

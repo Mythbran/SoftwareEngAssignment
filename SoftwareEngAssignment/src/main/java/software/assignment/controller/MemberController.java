@@ -84,8 +84,9 @@ public class MemberController {
         
         String uName = request.getParameter("uName");
         String password = request.getParameter("password");
-        if(memberDbase.passRetrieve(uName, password) == true){
-            return "hello";
+        boolean check = memberDbase.passRetrieve(uName, password);
+        if(check == true){
+            return "redirect:hello.do";
         }else{
             return "redirect:login.do";
         }
