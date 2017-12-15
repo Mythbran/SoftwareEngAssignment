@@ -229,6 +229,11 @@ public class memberDbase{
         }
     }   
     
+    //THIS DOES PASS RETRIEVALS 
+    //LIT THINGS HERE
+    //THIS IS FOR LOGINSSSSSS
+    //IT WORKSSSS
+    //:'D
     public static boolean passRetrieve(String uName, String password){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
@@ -263,4 +268,52 @@ public class memberDbase{
             pool.freeConnection(connection);
         }
     }
+    
+    //THIS IS GOING TO CHECK FOR MEMBER
+    //WILL ALSO CHECK THE ADMIN FLAG
+    //USE FOR RESTRICTED WEBPAGES
+    //RETURNING 2 WILL MEAN ADMIN
+    //RETURNING 1 WILL MEAN MEMBER
+    //RETURNING 0 WILL MEAN NO ACCOUNT EXISTS 
+    public static int role(String uName){
+        Connection pool = Connection.getInstance();
+        java.sql.Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int admin = 0;
+        int role = 0;
+        String SELECT = "select admin from member where uName = ?";
+        
+        try{
+            ps = connection.prepareStatement(SELECT);
+            ps.setString(1, uName);
+            rs = ps.executeQuery();
+            if(rs != null){
+                while(rs.next()){
+                    admin = rs.getInt("admin");
+                }
+                switch(admin){
+                    case 1:{
+                        role = 2;
+                        break;    
+                    }
+                    case 0:{
+                        role = 1;
+                        break; 
+                    }
+                    default:{
+                        role = 0;
+                    }
+                }
+            }
+            else{
+                return 0;
+            }
+            }catch(SQLException e){
+                System.err.println(e);
+                return 0;
+        } 
+        return role;
+    }
+    
 }
