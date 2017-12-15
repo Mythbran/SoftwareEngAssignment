@@ -24,7 +24,7 @@
             
             <h1>Login</h1>
             
-            <form method="post" action="<c:url value="rentals.do"/>"/>
+            <form method="post" action="<c:url value="home.do"/>"/>
                     
                 <p>
                     <label for="uName"> Username: </label>

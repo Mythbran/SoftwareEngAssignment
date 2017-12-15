@@ -35,5 +35,10 @@
         <p>
             <!-- might add password change -->
         </p>
+        <p>
+            <form action="<c:url value="hello.do"/>" method="post">
+                <input type="submit" value="Home" name="Home" />
+            </form>
+        </p>
     </body>
 </html>
