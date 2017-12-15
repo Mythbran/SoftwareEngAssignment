@@ -27,7 +27,7 @@
             
             
             <h1>Add a new Order</h1>
-            <form method="post" action="memberLogin.do"/>
+            <form method="post" action="submitOrder.do"/>
                 <p>
                     <label for="model">User ID: </label>
                     <input id="model" type="text" name="model" value="<c:out value="${member.uid}"/>" readonly/>
