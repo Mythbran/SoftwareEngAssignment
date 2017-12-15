@@ -79,6 +79,18 @@ public class MemberController {
         
     }
     
+    //CHECK FOR LOGIN 
+    public static String loginCheck(HttpServletRequest request){
+        
+        String uName = request.getParameter("uName");
+        String password = request.getParameter("password");
+        if(memberDbase.passRetrieve(uName, password) == true){
+            return "hello";
+        }else{
+            return "redirect:login.do";
+        }
+    }
+    
     //MEMBERSHIP PAGES 
     
     //MEMBERSHIP CODE

@@ -60,6 +60,11 @@ public class MainServlet extends HttpServlet {
                 jspPath = "WEB-INF/jsp/general/";
                 break;
             }
+            
+            case "/loginCheck.do":{
+                view = MemberController.loginCheck(request);
+                break;
+            }
 
             //MEMBERSHIP PAGES 
             
@@ -158,8 +163,8 @@ public class MainServlet extends HttpServlet {
             case "/editOrder.do":{
                 view = "editOrder";
                 jspPath= "/WEB-INF/jsp/member/";
-                Order order = new Order();
-                orderDbase.selectOne(Integer.parseInt(request.getParameter("oid")));
+                //Order order = new Order();
+                //orderDbase.selectOne(Integer.parseInt(request.getParameter("oid")));
                 
                 break;
             }    
