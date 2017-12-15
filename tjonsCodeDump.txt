@@ -1,0 +1,33 @@
+
+//ALL THE NEW CODE THAT I REMEMBER WRITING
+//NOT SURE WHAT BROKE THE CODE, NPEs EVERYWHERE
+//	GOES INTO MAINCONTROLLER
+ public static String memberEdit(HttpServletRequest request){
+            
+            return "memberEdit";       
+    }
+    
+    
+    public static String submitMemberEdit(HttpServletRequest request){
+        int uid = 1; //Integer.parseInt(request.getParameter("uid"));
+            Member member = memberDbase.selectOne(uid);
+            request.setAttribute("member", member);
+        
+            memberDbase.memberUpdate(member);   
+        return "redirect:memberPotal";
+    }
+	
+	
+	//GOES INTO MAINSERVLET
+	 case "/editOrder.do":{
+                view = "editOrder";
+                jspPath= "/WEB-INF/jsp/member/";
+
+                break;
+            }
+            case "/confirmOrderEdit.do":{
+                view = MainController.confirmOrderEdit(request);
+                break;
+            }
+	
+	
