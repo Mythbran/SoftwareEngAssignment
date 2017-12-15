@@ -6,13 +6,17 @@ package software.assignment.business;
 public class Order {
 
     // INITIALIZING ALL VARIABLES 
-
+    private int oid;
     private int uid;
     private int id;
     private String dateRented = ""; 
     private String dateReturned = "";
     private boolean active = true;
 
+    public int getOid() {
+        return oid;
+    }
+    
     public int getUid() {
         return uid;
     }
@@ -33,6 +37,10 @@ public class Order {
         return active;
     }
 
+    public void setOid(int uid) {
+        this.uid = oid;
+    }
+    
     public void setUid(int uid) {
         this.uid = uid;
     }
