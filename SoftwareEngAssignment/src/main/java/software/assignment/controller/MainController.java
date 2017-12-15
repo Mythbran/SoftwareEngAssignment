@@ -419,6 +419,22 @@ public class MainController {
         return "addCar";
     }
     
+    //TESTING 
+    public static String submitOrder(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+
+            Order order = (Order)session.getAttribute("order");
+            orderDbase.insert(order);
+
+            return "redirect:hello.do";
+
+
+    }
+    
+     public static String addOrder(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+      return "addOrder";  
+     }
     
 
     
