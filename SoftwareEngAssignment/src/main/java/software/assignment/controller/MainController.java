@@ -23,7 +23,7 @@ import software.assignment.data.memberDbase;
  * @author Owner
  */
 
-public class MemberController {
+public class MainController {
     
     //GENERAL PAGES 
     

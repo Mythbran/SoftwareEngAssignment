@@ -36,7 +36,7 @@ public class MainServlet extends HttpServlet {
             //WILL ACT AS A PORTAL TO EVERY OTHER WEBPAGE
             case "/hello.do":{
                     jspPath = "/WEB-INF/jsp/general/";
-                    view = MemberController.hello(request);        
+                    view = MainController.hello(request);        
                     break;
             }
             /*
@@ -51,18 +51,18 @@ public class MainServlet extends HttpServlet {
             //THIS IS THE MAIN WEBPAGE TO SHOW ALL VEHICLES AVAILABLE FOR RENTAL
             case "/rentals.do":{
                 jspPath = "/WEB-INF/jsp/general/";
-                view = MemberController.rentals(request);
+                view = MainController.rentals(request);
                 break;
             }
             
             case "/login.do":{
-                view = MemberController.login(request);
+                view = MainController.login(request);
                 jspPath = "WEB-INF/jsp/general/";
                 break;
             }
             
             case "/loginCheck.do":{
-                view = MemberController.loginCheck(request);
+                view = MainController.loginCheck(request);
                 break;
             }
 
@@ -71,7 +71,7 @@ public class MainServlet extends HttpServlet {
             //THIS WILL SEND TO A PAGE THAT HANDLES MEMBER REGISTRATIONS
             //TAKES ALL REGISTRATIONS AND SENDS IT TO MEMBERCONFIRM CLASS
             case "/membership.do":{
-                view = MemberController.membership(request);
+                view = MainController.membership(request);
                 jspPath = "/WEB-INF/jsp/member/";      
                 break;
             }
@@ -83,7 +83,7 @@ public class MainServlet extends HttpServlet {
             //FOR WHEN ADDING NOT EDITING 
             case "/memberConfirm.do":{
                 jspPath = "/WEB-INF/jsp/member/";
-                view = MemberController.memberConfirm(request);
+                view = MainController.memberConfirm(request);
                 break;
             }
             
@@ -93,7 +93,7 @@ public class MainServlet extends HttpServlet {
             //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
             case "/memberSubmit.do":{
                 
-                view = MemberController.memberSubmit(request);
+                view = MainController.memberSubmit(request);
                 break;
             }
             
@@ -103,7 +103,7 @@ public class MainServlet extends HttpServlet {
             //MEH WHO CARES 
             case "/memberPortal.do":{
                 jspPath = "/WEB-INF/jsp/member/";
-                view = MemberController.memberPortal(request);
+                view = MainController.memberPortal(request);
                 break;
             }
             
@@ -112,13 +112,13 @@ public class MainServlet extends HttpServlet {
             //HEH AINTN GIVING THOSE PRIVILEGES
             case "/memberEdit.do":{
                 jspPath = "/WEB-INF/jsp/member/";
-                view = MemberController.memberEdit(request);
+                view = MainController.memberEdit(request);
                 break;
             }
             
             //WHEN MEMBERS EDIT MEMBERS 
             case "/memberConfirmEdit.do":{
-                view = MemberController.memberConfirmEdit(request);
+                view = MainController.memberConfirmEdit(request);
                 break;
             }            
             
@@ -129,7 +129,7 @@ public class MainServlet extends HttpServlet {
             //NEEDS MUCH MORE WORK 
             //WILL SEND TO THE MAIN PAGE HANDLING ALL ADMIN RELATED THINGS
             case "/adminPortal.do":{
-                view = MemberController.adminPortal(request);
+                view = MainController.adminPortal(request);
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
@@ -138,7 +138,7 @@ public class MainServlet extends HttpServlet {
             //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO ADD CARS TO THE DATABASE 
             case "/addCar.do":{
-                view = MemberController.addCar(request);
+                view = MainController.addCar(request);
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
@@ -146,7 +146,7 @@ public class MainServlet extends HttpServlet {
             //CONFIRM CAR   
             //ADDCAR.DO WILL PASS TO THIS CLASS             
             case "/confirmCar.do":{
-                view = MemberController.confirmCar(request);
+                view = MainController.confirmCar(request);
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
@@ -155,7 +155,7 @@ public class MainServlet extends HttpServlet {
             //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO EDIT CARS INCLUDING DELETING FROM DATABASE
             case "/editCar.do":{
-                view = MemberController.editCar(request);
+                view = MainController.editCar(request);
                 jspPath = "WEB-INF/jsp/admin/";
                 break; 
             }
@@ -173,7 +173,7 @@ public class MainServlet extends HttpServlet {
             //THIS WILL ALLOW ADMINS TO VIEW MEMBERS REGISTERED 
             //ADMINS WILL BE ALLOWED TO SET MEMBERS AS ADMINS
             case "/viewAll.do":{
-                view = MemberController.viewAll(request);
+                view = MainController.viewAll(request);
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
@@ -181,7 +181,7 @@ public class MainServlet extends HttpServlet {
             //DELETE MEMBER
             //BASED ON UID 
             case "/delete.do":{
-                view = MemberController.delete(request);
+                view = MainController.delete(request);
                 jspPath = "WEB-INF/jsp/admin/";
                 break;
 
@@ -189,7 +189,7 @@ public class MainServlet extends HttpServlet {
             
             //WHEN ADMINS EDIT MEMBERS 
             case "/confirmEdit.do":{
-                view = MemberController.confirmEdit(request);
+                view = MainController.confirmEdit(request);
                 break;
             }
             
@@ -201,7 +201,7 @@ public class MainServlet extends HttpServlet {
             //EDIT : WILL ONLY BE AVAILABLE TO ADMIN
             //TIME CONSTRAINTS :( 
             case "/editMember.do":{
-                view = MemberController.editMember(request);
+                view = MainController.editMember(request);
                 jspPath= "/WEB-INF/jsp/admin/";
                 break;
             }
