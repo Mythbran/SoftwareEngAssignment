@@ -55,6 +55,12 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
+            case "/rent.do":{
+                jspPath = "/WEB-INF/jsp/general/";
+                view = MainController.rent(request);
+                break;
+            }
+            
             case "/login.do":{
                 view = MainController.login(request);
                 jspPath = "WEB-INF/jsp/general/";

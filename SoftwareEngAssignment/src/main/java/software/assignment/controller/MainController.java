@@ -63,6 +63,18 @@ public class MainController {
         
 
     }
+
+    public static String rent(HttpServletRequest request){
+        int id = Integer.parseInt(request.getParameter("id"));
+        Car car = carDbase.selectOne(id);
+        if(car != null){
+            request.setAttribute("car", car);
+            return "rent";
+        }else{
+            return  "redirect:rentals.do";
+        }
+    }
+
     
     //LOGIN CODE 
     public static String login(HttpServletRequest request){
@@ -383,6 +395,7 @@ public class MainController {
         
         return"redirect:viewAll.do";
     }
+    
     
     
     public static String confirmCarEdit (HttpServletRequest request){

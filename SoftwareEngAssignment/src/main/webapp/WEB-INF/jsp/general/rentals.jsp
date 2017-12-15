@@ -33,7 +33,7 @@
                             <td><c:out value="${row.availability}"/></td>
                             <td><c:out value="${row.location}"/></td>   
                             <c:url value="rent.do" var="rent">
-                                <c:param name="rent" value="${row.id}"/>                                   
+                                <c:param name="id" value="${row.id}"/>                                   
                             </c:url>                          
                             <td><a href="${rent}">Rent</a></td>                            
                         </tr>
