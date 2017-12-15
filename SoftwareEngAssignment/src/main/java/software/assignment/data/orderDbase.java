@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import software.assignment.business.Order;
 import java.sql.Date;
+
 import java.time.LocalDate;
 
 
@@ -30,7 +31,8 @@ public class orderDbase {
         PreparedStatement ps = null;    
         // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         int active;
-        Date date = Date.valueOf(LocalDate.MAX);
+
+        Date date = Date.valueOf(LocalDate.now());
         String INSERT = "INSERT INTO orders "
                 + "(uid, id, dateRented, active) "
                 + "VALUES (?, ?, ?, ?)";

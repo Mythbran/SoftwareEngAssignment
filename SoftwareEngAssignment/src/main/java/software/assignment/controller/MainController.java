@@ -437,14 +437,10 @@ public class MainController {
       return "addOrder";  
      }
      
-     public static String placeOrder(HttpServletRequest request){
-        HttpSession session = request.getSession(false);
-        
+     public static String placeOrder(HttpServletRequest request){       
         Order order = new Order();
-        
         order.setId(Integer.parseInt(request.getParameter("id")));
-        order.setUid(Integer.parseInt(request.getParameter("uid")));
-        order.setDateRented(request.getParameter("date"));            
+        order.setUid(Integer.parseInt(request.getParameter("uid")));         
         orderDbase.insert(order);
          
          
