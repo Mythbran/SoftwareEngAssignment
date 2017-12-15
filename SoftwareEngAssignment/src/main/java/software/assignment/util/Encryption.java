@@ -8,7 +8,6 @@ public class Encryption{
     final private static String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
     
     final private static int SALTLENGTH = 32; 
-    final private static int NUMOFIT = 100; 
     final private static String HASH = "sha-256";
     
     //randomize characters for a salt
@@ -43,7 +42,6 @@ public class Encryption{
             throw new RuntimeException(e.getCause());
         }
         
-        handler.setIterations(NUMOFIT);
         handler.setSaltLength(SALTLENGTH);
         handler.setEncoding("utf-8");
         
@@ -60,7 +58,6 @@ public class Encryption{
             throw new RuntimeException(e.getCause());
         }
         
-        handler.setIterations(NUMOFIT);
         handler.setSaltLength(SALTLENGTH);
         handler.setEncoding("UTF-8");
         
