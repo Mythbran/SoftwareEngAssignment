@@ -247,6 +247,14 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
+            case "/placeOrder.do":{
+                System.out.println(request.getParameter("id"));
+                System.out.println(request.getParameter("uid"));
+                System.out.println(request.getParameter("date"));
+                view = MainController.placeOrder(request);
+                break;
+            }
+            
             
             
 

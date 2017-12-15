@@ -436,8 +436,20 @@ public class MainController {
         HttpSession session = request.getSession(false);
       return "addOrder";  
      }
-    
-
+     
+     public static String placeOrder(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        
+        Order order = new Order();
+        
+        order.setId(Integer.parseInt(request.getParameter("id")));
+        order.setUid(Integer.parseInt(request.getParameter("uid")));
+        order.setDateRented(request.getParameter("date"));            
+        orderDbase.insert(order);
+         
+         
+        return "redirect:hello.do";
+     }
     
 
 }

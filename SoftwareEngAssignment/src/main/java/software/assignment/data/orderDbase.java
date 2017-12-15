@@ -9,8 +9,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import software.assignment.business.Order;
+import java.sql.Date;
+import java.time.LocalDate;
 
 
 
@@ -19,40 +23,31 @@ import software.assignment.business.Order;
  * @author Danton
  */
 public class orderDbase {
-        //NEED TO TEST 
-    //WILL INSERT MEMBERS INTO THE MEMBER DATABASE 
-    //WILL HAVE TO IMPLEMENT HASHING FOR THE PASSWORDS EVENTUALLY 
-    //DON'T WANT THEM CLEARTEXT PASSWORDS NOW DO WE???? 
-    //MAYBE SAME WITH CREDIT CARD NUMBERS... 
-    //WHY NOT JUST HASH IT ALL AT THIS POINT AYYYYY ;) 
-    //I'M WAY TOO TIRED AND HIGH FOR THIS SHIT 
+      
     public static void insert(Order order){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;    
         // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         int active;
-
+        Date date = Date.valueOf(LocalDate.MAX);
         String INSERT = "INSERT INTO orders "
                 + "(uid, id, dateRented, active) "
                 + "VALUES (?, ?, ?, ?)";
         
         
         
+        
         try{
         active = 0;
-        if (order.isActive() == true) {
-            active = 1;
-        }
         
-        ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        ps = connection.prepareStatement(INSERT);
         ps.setInt(1, order.getUid());
         ps.setInt (2, order.getId());
-        ps.setString(3, order.getDateRented());
+        ps.setDate(3, date);
         ps.setInt(4, active);
         
         ps.executeUpdate();
-        ResultSet keys = ps.getGeneratedKeys();
         
         } catch (SQLException e) {
             System.err.println(e);

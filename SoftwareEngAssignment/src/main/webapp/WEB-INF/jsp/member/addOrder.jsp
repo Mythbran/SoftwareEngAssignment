@@ -3,7 +3,7 @@
     Created on : 13-Dec-2017, 11:04:53
     Author     : Dan
 --%>
-
+<%@taglib prefix="d" tagdir="/WEB-INF/tags/" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
                 </p>
                 
                 <p>
-                    <label for="dateRented">Date of Rental(YYYY-MM-DD): </label>
+                    <label for="dateRented">Date of Rental(YYYYMMDD): </label>
                     <input id="dateRented" type="text" name="dateRented" value="<c:out value="${order.dateRented}"/>" required/>
                      
                 </p>                     
@@ -54,7 +54,8 @@
             <form action="<c:url value="hello.do"/>" method="post"> 
                 <input type="submit" value="Back" />
             </form>
-
+              
         </main>
     </body>
+  
 </html>
