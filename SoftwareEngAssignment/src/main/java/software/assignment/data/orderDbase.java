@@ -35,7 +35,7 @@ public class orderDbase {
 
         String INSERT = "INSERT INTO orders "
                 + "(uid, id, dateRented, active) "
-                + "VALUES (?, ?, ?, ?";
+                + "VALUES (?, ?, ?, ?)";
         
         
         
