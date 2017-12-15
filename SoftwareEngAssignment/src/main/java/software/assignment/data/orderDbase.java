@@ -66,15 +66,14 @@ public class orderDbase {
     
     //NEEDS TESTING 
     //WILL DELETE ONE MEMBER 
-    public static void deleteOne(int uid, int id){    
+    public static void deleteOne(int oid){    
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE * from order where uid = ? AND id = ?";
+        String DELETE = "DELETE * from order where oid = ?";
         try{
             ps = connection.prepareStatement(DELETE);
-            ps.setInt(1, uid);
-            ps.setInt(2, id);
+            ps.setInt(1, oid);
             ps.executeUpdate();
         }catch (SQLException e){
             System.err.println(e);
@@ -137,6 +136,7 @@ public class orderDbase {
             boolean active;
             while(rs.next()){
                 Order order = new Order();
+                order.setOid(rs.getInt("oid"));
                 order.setUid(rs.getInt("uid"));
                 order.setId(rs.getInt("id"));
                 order.setDateRented(rs.getString("dateRented"));
@@ -166,23 +166,23 @@ public class orderDbase {
     //NEEDS TESTING 
     //THIS WILL SELECT ONE CAR
     //MAIN USE IS WHEN EDITING CARS FOR ADMINS 
-    public static Order selectOne(int uid, int id){
+    public static Order selectOne(int oid){
         
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String SELECT = "select * from order where uid = ? AND id = ?";
+        String SELECT = "select * from order where oid = ?";
         try{
             ps = connection.prepareStatement(SELECT);
-            ps.setInt(1, uid);
-            ps.setInt(2, id);
+            ps.setInt(1, oid);
             boolean active;
             rs = ps.executeQuery();
             Order order = null;
             if(rs.next()){
                 order = new Order();
+                order.setOid(rs.getInt("oid"));
                 order.setUid(rs.getInt("uid"));
                 order.setId(rs.getInt("id"));
                 order.setDateRented(rs.getString("dateRented"));
