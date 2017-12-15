@@ -102,6 +102,21 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
+            //BASICALLY SAME AS ADMIN EDIT MEMBER 
+            //WILL NOT INCLUDE ADMIN FLAG
+            //HEH AINTN GIVING THOSE PRIVILEGES
+            case "/memberEdit.do":{
+                jspPath = "/WEB-INF/jsp/member/";
+                view = MemberController.memberEdit(request);
+                break;
+            }
+            
+            //WHEN MEMBERS EDIT MEMBERS 
+            case "/memberConfirmEdit.do":{
+                view = MemberController.memberConfirmEdit(request);
+                break;
+            }            
+            
 
             //ADMIN PAGES  
                                           
@@ -170,7 +185,6 @@ public class MainServlet extends HttpServlet {
             //WHEN ADMINS EDIT MEMBERS 
             case "/confirmEdit.do":{
                 view = MemberController.confirmEdit(request);
-                jspPath="/WEB-INF/jsp/admin";
                 break;
             }
             

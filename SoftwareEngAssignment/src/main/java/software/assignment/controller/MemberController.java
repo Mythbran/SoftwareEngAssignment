@@ -152,6 +152,16 @@ public class MemberController {
         return "memberPortal";
     }
     
+    //GIVE MEMBERS THE ABILITY TO CHANGE THEIR INFO 
+    //WILL BE SLIGHTLY DIFFERENT THAN EDITMEMBER
+    //WILL NOT HAVE THE ABILITY TO CHAGNE ADMIN FLAG
+    public static String memberEdit(HttpServletRequest request){
+            int uid = 1; //Integer.parseInt(request.getParameter("uid"));
+            Member member = memberDbase.selectOne(uid);
+            request.setAttribute("member", member);
+            return "memberEdit";       
+    }
+    
     //ADMIN PAGES
     
     //EDIT MEMBER CODE
@@ -183,6 +193,29 @@ public class MemberController {
       
        //memberDbase.selectOne("uid");
        //return "editMember";
+        
+    }
+    
+    //MEMBER CONFIRM EDIT
+    //BASICALLY THE EXACTY SAME AS THE ADMIN VERSION 
+    //MINUS THE ABILITY TO CHANGE ADMIN FLAG 
+    public static String memberConfirmEdit(HttpServletRequest request){
+        Member member = new Member();
+        
+        try{
+            member.setUid(Integer.parseInt(request.getParameter("uid")));
+            member.setfName(request.getParameter("fName"));
+            member.setlName(request.getParameter("lName"));
+            member.setpNumber(request.getParameter("pNumber"));
+            member.setcCard(request.getParameter("cCard"));        
+            memberDbase.adminUpdate(member);
+            
+        }catch(NumberFormatException e){
+            
+        }
+        memberDbase.memberUpdate(member);    
+        
+        return"redirect:memberPortal.do";   
         
     }
     
@@ -251,13 +284,13 @@ public class MemberController {
             member.setcCard(request.getParameter("cCard"));
             String adminT = request.getParameter("admin");
             member.setAdmin((adminT == null) ? "no" : "yes");           
-            memberDbase.update(member);
+            memberDbase.adminUpdate(member);
             return "redirect:viewAll.do";
             
         }catch(NumberFormatException e){
             
         }
-        memberDbase.update(member);    
+        memberDbase.adminUpdate(member);    
         
         return"redirect:viewAll.do";
     }

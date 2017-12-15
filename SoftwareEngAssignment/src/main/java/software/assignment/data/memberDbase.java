@@ -79,11 +79,11 @@ public class memberDbase{
     }   
     
     
-    //NEEDS TESTING
     //WIL UPDATE ONE MEMBER
     //THIS WILL NOT UPDATE PASSWORDS
     //WILL MAKE ANOTHER ONE FOR UPDATING JUST PASSWORDS BASED ON A USERNAME 
-    public static void update(Member member){
+    //ONNLY USABLE VIA ADMIN
+    public static void adminUpdate(Member member){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -92,7 +92,7 @@ public class memberDbase{
                 + "pNumber = ?, cCard = ?, "
                 + "admin = ? "
                 + "where uid = ?";
-        try{ //fName, lName, pNumber, cCard, uName, password, admin
+        try{ //fName, lName, pNumber, cCard, uName, admin
             ps = connection.prepareStatement(UPDATE);
             ps.setString(1, member.getfName());
             ps.setString(2, member.getlName());
@@ -114,6 +114,34 @@ public class memberDbase{
             DatabaseUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
+    }
+    
+    //UPDATE FOR MEMBER EDIT CLASS
+    //THIS WILL BE ALMOST IDENTICAL TO ADMIN 
+    //DIFFERENCE IT MEMBER WONT HAVE THE ADMIN SET
+    //MEMBERS CAN'T SET ADMIN PRIVELEGE
+    public static void memberUpdate(Member member){
+        Connection pool = Connection.getInstance();
+        java.sql.Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String UPDATE = "update member set "
+                + "fName = ?, lName = ?, "
+                + "pNumber = ?, cCard = ?, "
+                + "where uid = ?";
+        try{ //fName, lName, pNumber, cCard, uName
+            ps = connection.prepareStatement(UPDATE);
+            ps.setString(1, member.getfName());
+            ps.setString(2, member.getlName());
+            ps.setString(3, member.getpNumber());
+            ps.setString(4, member.getcCard()); 
+            ps.setInt(6, member.getUid());                       
+            ps.executeUpdate();
+        }catch (SQLException e){
+            System.err.println(e);
+        }finally{
+            DatabaseUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }       
     }
     
     //NEEDS TESTING 
