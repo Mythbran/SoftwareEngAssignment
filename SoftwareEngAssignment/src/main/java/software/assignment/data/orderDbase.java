@@ -34,7 +34,7 @@ public class orderDbase {
         int active;
 
         String INSERT = "INSERT INTO orders "
-                + "(uid, id, dateRented, active)"
+                + "(uid, id, dateRented, active) "
                 + "VALUES (?, ?, ?, ?";
         
         
@@ -70,7 +70,7 @@ public class orderDbase {
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE * from order where oid = ?";
+        String DELETE = "DELETE from order where oid = ?";
         try{
             ps = connection.prepareStatement(DELETE);
             ps.setInt(1, oid);
@@ -96,8 +96,8 @@ public class orderDbase {
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String UPDATE = "update order set"
-                + "uid = ?, id = ? "
-                + "dateRented = ?, dateReturned = ? "
+                + "uid = ?, id = ? ,"
+                + "dateRented = ?, dateReturned = ? ,"
                 + "active = ?";
         try{ //fName, lName, pNumber, cCard, uName, password, admin
         int active = 0;
@@ -173,7 +173,7 @@ public class orderDbase {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String SELECT = "select * from order where oid = ?";
+        String SELECT = "select from order where oid = ?";
         try{
             ps = connection.prepareStatement(SELECT);
             ps.setInt(1, oid);

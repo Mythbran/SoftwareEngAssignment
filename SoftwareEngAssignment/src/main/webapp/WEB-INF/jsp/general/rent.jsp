@@ -35,7 +35,7 @@
                             <c:url value="placeOrder.do" var="placeOrder">
                                 <c:param name="id" value="${car.id}"/>                                   
                             </c:url>                          
-                            <td><a href="${placeOrder}">Place Order</a></td>       
+                            <td><a href="${placeOrder}">Place Order</a></td>       4
                         </tr>
                 </tbody>
             </table>
