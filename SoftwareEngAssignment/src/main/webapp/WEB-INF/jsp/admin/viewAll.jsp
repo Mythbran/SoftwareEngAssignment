@@ -30,7 +30,7 @@
                 <tbody>
                     <c:forEach var="row" items="${members}" varStatus="s">
                         <tr>
-                            <td><c:out value="${row.uid}"/></td>
+                            <td><c:out value="${s.count}"/></td>
                             <td><c:out value="${row.fName}"/></td>                                
                             <td><c:out value="${row.lName}"/></td>                            
                             <td><c:out value="${row.pNumber}"/></td>                            

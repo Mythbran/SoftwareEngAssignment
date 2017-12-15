@@ -67,7 +67,7 @@ public class orderDbase {
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE from order where oid = ?";
+        String DELETE = "DELETE from orders where oid = ?";
         try{
             ps = connection.prepareStatement(DELETE);
             ps.setInt(1, oid);
@@ -104,8 +104,8 @@ public class orderDbase {
             ps = connection.prepareStatement(UPDATE);
             ps.setInt(1, order.getUid());
             ps.setInt(2, order.getId());
-            ps.setString(3, order.getDateRented());
-            ps.setString(4, order.getDateReturned());
+            ps.setDate(3, order.getDateRented());
+            ps.setDate(4, order.getDateReturned());
             ps.setInt(5, active); 
             ps.executeUpdate();
         }catch (SQLException e){
@@ -126,26 +126,21 @@ public class orderDbase {
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String SELECT = "select * from order";
+        String SELECT = "select * from orders";
+        
         try{
             ps = connection.prepareStatement(SELECT);
             rs = ps.executeQuery();
-            boolean active;
             while(rs.next()){
+                Boolean active = false;
                 Order order = new Order();
                 order.setOid(rs.getInt("oid"));
                 order.setUid(rs.getInt("uid"));
-                order.setId(rs.getInt("id"));
-                order.setDateRented(rs.getString("dateRented"));
-                order.setDateReturned(rs.getString("dateReturned"));
-                int activeTemp = rs.getInt("active");
-                if (activeTemp == 1){
-                    active = true;
-                }
-                else{
-                    active = false;
-                }
-                order.setActive(active);   
+                order.setDateRented(rs.getDate("dateRented"));
+                order.setDateReturned(rs.getDate("dateReturned"));
+                active = (rs.getBoolean("active"));    
+                order.setId(rs.getInt("id")); 
+                order.setActive(active);                
                 orders.add(order);
             }
             
@@ -182,8 +177,8 @@ public class orderDbase {
                 order.setOid(rs.getInt("oid"));
                 order.setUid(rs.getInt("uid"));
                 order.setId(rs.getInt("id"));
-                order.setDateRented(rs.getString("dateRented"));
-                order.setDateReturned(rs.getString("dateReturned"));
+                order.setDateRented(rs.getDate("dateRented"));
+                order.setDateReturned(rs.getDate("dateReturned"));
                 int activeTemp = rs.getInt("active");
                 if (activeTemp == 1){
                     active = true;

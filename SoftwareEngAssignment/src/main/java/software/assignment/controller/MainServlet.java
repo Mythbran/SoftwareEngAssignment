@@ -32,6 +32,11 @@ public class MainServlet extends HttpServlet {
             
             //GENERAL WEBPAGES 
             
+            //PLACING ORDERS
+            case "/placeOrder.do":{
+                view = MainController.placeOrder(request);
+                break;
+            }
             //MAIN WELCOME SCREEN 
             //WILL ACT AS A PORTAL TO EVERY OTHER WEBPAGE
             case "/hello.do":{
@@ -55,18 +60,22 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
+            //BRINGS YOU TO THE CONFRIM RENTAL PAGE
             case "/rent.do":{
                 jspPath = "/WEB-INF/jsp/general/";
                 view = MainController.rent(request);
                 break;
             }
             
+            
+            //SIMPLE LOGIN CHECKER 
             case "/login.do":{
                 view = MainController.login(request);
                 jspPath = "WEB-INF/jsp/general/";
                 break;
             }
             
+            //LOGIN CHECK 
             case "/loginCheck.do":{
                 view = MainController.loginCheck(request);
                 break;
@@ -98,7 +107,7 @@ public class MainServlet extends HttpServlet {
             //AND DATABASES FILL UP
             //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
             case "/memberSubmit.do":{
-                
+
                 view = MainController.memberSubmit(request);
                 break;
             }
@@ -126,7 +135,14 @@ public class MainServlet extends HttpServlet {
             case "/memberConfirmEdit.do":{
                 view = MainController.memberConfirmEdit(request);
                 break;
-            }            
+            }    
+            
+            //CAN EDIT AN ORDER
+            case "/editOrder.do":{
+                view = MainController.editOrder(request);
+                jspPath= "/WEB-INF/jsp/member/";                
+                break;
+            }  
 
 
             //ADMIN PAGES  
@@ -157,6 +173,7 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
+            //CONFIRMS IF THE INFO IS CORRECT FOR THE CAR YOU WANT TO ADD 
             case"/carConfirm.do":{
                 view = MainController.carConfirm(request);
                 break;
@@ -171,14 +188,7 @@ public class MainServlet extends HttpServlet {
                 break; 
             }
             
-            case "/editOrder.do":{
-                view = "editOrder";
-                jspPath= "/WEB-INF/jsp/member/";
-                //Order order = new Order();
-                //orderDbase.selectOne(Integer.parseInt(request.getParameter("oid")));
-                
-                break;
-            }    
+  
                 
             //VIEW ALL CARS 
             case"/viewAllCars.do":{
@@ -204,6 +214,7 @@ public class MainServlet extends HttpServlet {
 
             }
             
+            //DELETE CAR
             case "/deleteCar.do":{
                 view = MainController.deleteCar(request);
                 break;
@@ -234,11 +245,17 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             
-            case "/placeOrder.do":{
-                view = MainController.placeOrder(request);
+            case "/selectAllOrders.do":{
+                 view= MainController.selectAllOrders(request);
+                 jspPath = "/WEB-INF/jsp/admin/";
+                 break;
+            }
+
+            case "/deleteOrder.do":{
+                view = MainController.deleteOrder(request);
+                System.out.println(request.getParameter("uid"));
                 break;
             }
-            
             
             
 

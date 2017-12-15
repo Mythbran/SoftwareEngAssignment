@@ -16,7 +16,7 @@
                 <caption>All Cars</caption>
                 <thead>
                     <tr>
-                        <th>User ID</th>
+                        <th>Car ID</th>
                         <th>Make</th>
                         <th>Model</th>
                         <th>Price</th>
@@ -28,7 +28,7 @@
                 <tbody>
                     <c:forEach var="row" items="${cars}" varStatus="s">
                         <tr>
-                            <td><c:out value="${row.id}"/></td>
+                            <td><c:out value="${s.count}"/></td>
                             <td><c:out value="${row.make}"/></td>                                
                             <td><c:out value="${row.model}"/></td>                            
                             <td><c:out value="${row.price}"/></td>                            

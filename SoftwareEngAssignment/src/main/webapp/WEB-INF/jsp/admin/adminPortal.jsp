@@ -31,6 +31,11 @@
                 </form>
             </p>
             <p>
+                <form action="<c:url value="selectAllOrders.do"/>" method="post">
+                    <input type="submit" value="View All Orders" name="viewAllOrders" />
+                </form>
+            </p>
+            <p>
                 <form action="<c:url value="hello.do"/>" method="post">
                     <input type="submit" value="Home" name="Home" />
                 </form>

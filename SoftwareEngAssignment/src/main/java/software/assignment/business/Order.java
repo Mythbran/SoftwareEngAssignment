@@ -1,4 +1,7 @@
 package software.assignment.business;
+
+import java.sql.Date;
+
 /**
  *
  * @author Danton
@@ -9,8 +12,8 @@ public class Order {
     private int oid;
     private int uid;
     private int id;
-    private String dateRented = ""; 
-    private String dateReturned = "";
+    private java.sql.Date dateRented; 
+    private java.sql.Date dateReturned;
     private boolean active = true;
 
     public int getOid() {
@@ -25,12 +28,20 @@ public class Order {
         return id;
     }
 
-    public String getDateRented() {
+    public Date getDateRented() {
         return dateRented;
     }
 
-    public String getDateReturned() {
+    public Date getDateReturned() {
         return dateReturned;
+    }
+
+    public void setDateRented(Date dateRented) {
+        this.dateRented = dateRented;
+    }
+
+    public void setDateReturned(Date dateReturned) {
+        this.dateReturned = dateReturned;
     }
 
     public boolean isActive() {
@@ -49,13 +60,7 @@ public class Order {
         this.id = id;
     }
 
-    public void setDateRented(String dateRented) {
-        this.dateRented = dateRented;
-    }
 
-    public void setDateReturned(String dateReturned) {
-        this.dateReturned = dateReturned;
-    }
 
     public void setActive(boolean active) {
         this.active = active;

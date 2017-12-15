@@ -432,6 +432,23 @@ public class MainController {
          
         return "redirect:hello.do";
      }
+     
+     public static String editOrder(HttpServletRequest request){
+         
+         return "editOrder";
+     }
     
+    public static String selectAllOrders(HttpServletRequest request){
+        List<Order> orders = orderDbase.selectAll();
+        request.setAttribute("orders", orders);    
+        
+        return "viewAllOrders";
+    }
+    
+    public static String deleteOrder(HttpServletRequest request){
+        orderDbase.deleteOne(Integer.parseInt(request.getParameter("oid")));
+        System.out.println("oid");
+        return "redirect:selectAllOrders.do";
+    }
 
 }
