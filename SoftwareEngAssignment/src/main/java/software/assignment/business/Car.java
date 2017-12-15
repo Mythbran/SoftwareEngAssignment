@@ -16,8 +16,19 @@ public class Car{
     private String availability = "";
     private float price; 
     private String model = "";
+    private String make = "";
+
+    
     private int id;
 
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+    
     public int getId() {
         return id;
     }

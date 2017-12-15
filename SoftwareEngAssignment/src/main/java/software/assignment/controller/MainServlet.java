@@ -150,6 +150,11 @@ public class MainServlet extends HttpServlet {
                 jspPath = "/WEB-INF/jsp/admin/";
                 break;
             }
+            
+            case"/carConfirm.do":{
+                view = MainController.carConfirm(request);
+                break;
+            }
 
             //EDIT CAR
             //NEEDS DATABASE WORK 
@@ -169,6 +174,12 @@ public class MainServlet extends HttpServlet {
                 break;
             }    
                 
+            //VIEW ALL CARS 
+            case"/viewAllCars.do":{
+                view = MainController.viewAllCars(request); 
+                jspPath = "WEB-INF/jsp/admin/";
+                break;
+            }
             //VIEW ALL MEMBERS
             //THIS WILL ALLOW ADMINS TO VIEW MEMBERS REGISTERED 
             //ADMINS WILL BE ALLOWED TO SET MEMBERS AS ADMINS
@@ -187,9 +198,20 @@ public class MainServlet extends HttpServlet {
 
             }
             
+            case "/deleteCar.do":{
+                view = MainController.deleteCar(request);
+                break;
+            }
+            
             //WHEN ADMINS EDIT MEMBERS 
             case "/confirmEdit.do":{
                 view = MainController.confirmEdit(request);
+                break;
+            }
+            
+            //WHEN ADMINS EDIT CARS
+            case "/confirmCarEdit.do":{
+                view = MainController.confirmCarEdit(request);
                 break;
             }
             
@@ -205,6 +227,8 @@ public class MainServlet extends HttpServlet {
                 jspPath= "/WEB-INF/jsp/admin/";
                 break;
             }
+            
+            
             
 
             default: {

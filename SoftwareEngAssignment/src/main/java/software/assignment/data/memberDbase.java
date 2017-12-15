@@ -19,15 +19,10 @@ public class memberDbase{
     //DON'T WANT THEM CLEARTEXT PASSWORDS NOW DO WE???? 
     //MAYBE SAME WITH CREDIT CARD NUMBERS... 
     //WHY NOT JUST HASH IT ALL AT THIS POINT AYYYYY ;) 
-    //I KEEP GETTING A NULL POINTER EXCEPTION HERE
-    //NOT SURE WHY. HAS SOMETHING TODO WITH THE CONNECTION CLASS THOUGH
-    //BEEN A PROBLEM FOR A WHILE THAT I DIDN'T WANT TO TACKLE 
-    //FUCK ARRAYS AND POINTERS 
     public static void insert(Member member){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        int admin;
 
         String INSERT = "INSERT INTO member "
                 + "(fName, lName, pNumber, cCard, uName, password, admin) "
@@ -42,7 +37,6 @@ public class memberDbase{
         ps.setString(5, member.getuName());
         String passT = Encryption.encode(member.getPassword());
         ps.setString(6, passT);
-        String adminTemp = member.getAdmin();
         ps.setInt(7, 0);
         
         ps.executeUpdate();

@@ -27,17 +27,17 @@ public class carDbase{
         // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         
         String INSERT = "INSERT INTO car "
-                + "(model, price, availability, location)"
-                + "VALUES (?,?,?,?)";
+                + "(model, make, price, availability, location) "
+                + "VALUES (?,?,?,?,?)";
         
         try{
-        ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        ps = connection.prepareStatement(INSERT);
         ps.setString(1, car.getModel());
-        ps.setFloat(2, car.getPrice());
-        ps.setString(3, car.getAvailability());
-        ps.setString(4, car.getLocation());
+        ps.setString(2, car.getMake());
+        ps.setFloat(3, car.getPrice());
+        ps.setString(4, car.getAvailability());
+        ps.setString(5, car.getLocation());
         ps.executeUpdate();
-        ResultSet keys = ps.getGeneratedKeys();
         
         } catch (SQLException e) {
             System.err.println(e);
@@ -55,7 +55,7 @@ public class carDbase{
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String DELETE = "DELETE * from car where uid="+id;
+        String DELETE = "DELETE from car where id = ?";
         try{
             ps = connection.prepareStatement(DELETE);
             ps.setInt(1, id);
@@ -77,17 +77,18 @@ public class carDbase{
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String UPDATE = "update car set"
-                + "model = ?, price = ? "
-                + "availbility = ?, location = ? "
+        String UPDATE = "update car set "
+                + "make = ?, model = ?, price = ?, "
+                + "availability = ?, location = ? "
                 + "where id = ?";
         try{
             ps = connection.prepareStatement(UPDATE);
-            ps.setString(1, car.getModel());
-            ps.setFloat(2, car.getPrice());
-            ps.setString(3, car.getAvailability());
-            ps.setString(4, car.getLocation());
-            ps.setInt(5, car.getId());
+            ps.setString(1, car.getMake());
+            ps.setString(2, car.getModel());   
+            ps.setFloat(3, car.getPrice());
+            ps.setString(4, car.getAvailability());
+            ps.setString(5, car.getLocation());
+            ps.setInt(6, car.getId());
             ps.executeUpdate();
         }catch (SQLException e){
             System.err.println(e);
@@ -115,7 +116,8 @@ public class carDbase{
             while(rs.next()){
                 Car car = new Car();
                 car.setId(rs.getInt("id"));
-                car.setModel(rs.getString("fName"));
+                car.setModel(rs.getString("model"));
+                car.setMake(rs.getString("make"));
                 car.setPrice(rs.getFloat("price"));
                 car.setAvailability(rs.getString("availability"));
                 car.setLocation(rs.getString("location"));
@@ -153,6 +155,7 @@ public class carDbase{
                 car = new Car();
                 car.setId(uid);
                 car.setModel(rs.getString("model"));
+                car.setMake(rs.getString("make"));
                 car.setPrice(rs.getFloat("price"));
                 car.setAvailability(rs.getString("availability"));
                 car.setLocation(rs.getString("location"));

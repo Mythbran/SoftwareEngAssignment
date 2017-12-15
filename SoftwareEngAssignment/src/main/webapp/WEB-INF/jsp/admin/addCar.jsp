@@ -26,12 +26,14 @@
             
             
             <h1>Add a new Car</h1>
-            <form method="post" action="memberLogin.do"/>
+            <form method="post" action="confirmCar.do"/>
                 <p>
                     <label for="model">Model of Car: </label>
                     <input id="model" type="text" name="model" value="<c:out value="${param.model}"/>" required/>
-                   
-              
+                </p>
+                <p>
+                    <label for="model">Make of Car: </label>
+                    <input id="model" type="text" name="make" value="<c:out value="${param.make}"/>" required/>
                 </p>
                 <p>
                     <label for="Price">Price: </label>

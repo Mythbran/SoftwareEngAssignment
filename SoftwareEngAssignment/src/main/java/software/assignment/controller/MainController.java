@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import software.assignment.business.Member;
+import software.assignment.business.*;
+import software.assignment.data.carDbase;
 import software.assignment.data.memberDbase;
 
 /**
@@ -253,7 +254,62 @@ public class MainController {
         }else{
             return "error";
         }*/
+        Car car = new Car();
+        car.setModel(request.getParameter("model"));
+        car.setMake(request.getParameter("make"));
+        car.setPrice(Float.parseFloat(request.getParameter("price")));
+        car.setAvailability(request.getParameter("availability"));
+        car.setLocation(request.getParameter("location"));
+
+        //CAN ADD IN VALIDATION THINGS HERE
+        /*
+        Set<ConstraintViolation<Member>> errors = ValidationUtil.getValidator().validate(member);
+        
+        if(errors.isEmpty(){
+            HttpSession session = request.getSession();
+            session.setAttribute("member", member);
+        
+            return "memberConfirm";
+        }else{
+            request.setAttribute("errors, errors); 
+            return input(request);
+        }
+        
+        */
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("car", car);       
         return "confirmCar";
+    }
+    
+    //CAR CONFIRM
+    //SIMILAR TO MEMBER CONFIRM
+    //TAKES INPUT FROM CONFIRMCAR AND ADDS IT INTO DBASE 
+    public static String carConfirm (HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        //if(session == null || session.getAttribute("member") == null){
+            //return "error";
+        //}else{
+            Car car = (Car)session.getAttribute("car");
+            carDbase.insert(car);
+            /*
+            String userName = String.format("%s, member.getuName().trim();
+            Cookie cookie = new Cookie("userName", userName);
+            cookie.setMaxAge(30 * 24 * 60 * 60) //one month 
+            response.addCookie(cookie);
+            
+            */
+            return "redirect:adminPortal.do";
+        
+    }
+    
+    //VIEW ALL CARS 
+    //WILL BE ABLE TO DELETE AND EDIT CARS FROM THERE 
+    public static String viewAllCars(HttpServletRequest request){
+            List<Car> cars = carDbase.selectAll();
+            request.setAttribute("cars", cars);
+            return "viewAllCars";      
+        
     }
     
     //EDIT CAR FUNCTION 
@@ -263,7 +319,18 @@ public class MainController {
         }else{
             return "error";
         }*/
-        return "editCar";
+        int uid = Integer.parseInt(request.getParameter("id"));
+        Car car = carDbase.selectOne(uid);
+        if(car != null){
+            request.setAttribute("car", car);
+            return "editCar";
+               
+        }
+        else{
+            return "redirect:viewAllCar.do";
+        }
+             
+        
     }
 
 
@@ -285,6 +352,11 @@ public class MainController {
           //  return "error";
         //}
     }
+    
+    public static String deleteCar(HttpServletRequest request){
+        carDbase.deleteOne(Integer.parseInt(request.getParameter("id")));
+        return "redirect:viewAllCars.do";
+    }
 
     public static String confirmEdit(HttpServletRequest request) {
         Member member = new Member();
@@ -302,15 +374,33 @@ public class MainController {
             
         }catch(NumberFormatException e){
             
-        }
-        memberDbase.adminUpdate(member);    
+        } 
         
         return"redirect:viewAll.do";
     }
-
-    static String addCar(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    public static String confirmCarEdit (HttpServletRequest request){
+        Car car = new Car();
+        try{
+            car.setId(Integer.parseInt(request.getParameter("id")));
+            car.setMake(request.getParameter("make"));
+            car.setModel(request.getParameter("model"));
+            car.setPrice(Float.parseFloat(request.getParameter("price")));
+            car.setAvailability(request.getParameter("availability"));
+            car.setLocation(request.getParameter("location"));
+            carDbase.update(car);
+        }catch(NumberFormatException e){
+        
+        }
+        return "redirect:viewAllCars.do";
     }
+    
+    static String addCar(HttpServletRequest request) {
+        return "addCar";
+    }
+    
+    
 
     
 
