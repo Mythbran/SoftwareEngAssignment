@@ -1,5 +1,3 @@
-//This class isn't the one causing the NPE. Must be another class before this one... 
-
 package software.assignment.data;
 
 

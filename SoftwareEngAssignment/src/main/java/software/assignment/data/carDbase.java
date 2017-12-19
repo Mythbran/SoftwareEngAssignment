@@ -14,9 +14,7 @@ import java.util.ArrayList;
 
 
 public class carDbase{
-    
-    
-    //NEED TO TEST 
+ 
     //WILL INSERT CARS INTO THE CAR DATABASE 
     public static void insert(Car car){
         Connection pool = Connection.getInstance();
@@ -24,7 +22,6 @@ public class carDbase{
 
         
         PreparedStatement ps = null;    
-        // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
         
         String INSERT = "INSERT INTO car "
                 + "(model, make, price, availability, location) "
@@ -49,7 +46,6 @@ public class carDbase{
              
     }
     
-    //NEEDS TESTING 
     //WILL DELETE ONE CAR 
     public static void deleteOne(int id){    
         Connection pool = Connection.getInstance();
@@ -71,7 +67,6 @@ public class carDbase{
                
     }
    
-    //NEEDS TESTING
     //WIL UPDATE ONE CAR
     public static void update(Car car){
         Connection pool = Connection.getInstance();
@@ -97,8 +92,7 @@ public class carDbase{
             pool.freeConnection(connection);
         }
     }
-    
-    //NEEDS TESTING 
+     
     //THIS WILL SELECT ALL CARS IN THE CAR DATABASE 
     //THIS WILL HAVE 2 PURPOSES 
     //1: USE FOR THE RENTAL PAGE 
@@ -135,7 +129,6 @@ public class carDbase{
         return cars;
     }
     
-    //NEEDS TESTING 
     //THIS WILL SELECT ONE CAR
     //MAIN USE IS WHEN EDITING CARS FOR ADMINS 
     public static Car selectOne(int uid){

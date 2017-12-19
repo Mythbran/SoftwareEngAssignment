@@ -43,7 +43,6 @@ public class Member{
     
     //ADMIN
     //HAVE BOTH A STRING AND A BOOLEAN 
-    //FIGURE OUT WHICH ONE WORKS
     public String getAdmin() {
         return admin;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package software.assignment.data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +8,6 @@ import software.assignment.util.Encryption;
 
 public class memberDbase{
     
-    //TESTED AND WORKING **** :) :D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D:D FINALLY
-    //WILL INSERT MEMBERS INTO THE MEMBER DATABASE 
-    //WILL HAVE TO IMPLEMENT HASHING FOR THE PASSWORDS EVENTUALLY 
-    //DON'T WANT THEM CLEARTEXT PASSWORDS NOW DO WE???? 
-    //MAYBE SAME WITH CREDIT CARD NUMBERS... 
-    //WHY NOT JUST HASH IT ALL AT THIS POINT AYYYYY ;) 
     public static void insert(Member member){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
@@ -52,7 +41,6 @@ public class memberDbase{
               
     }
     
-    //NEEDS TESTING 
     //WILL DELETE ONE MEMBER 
     public static void deleteOne(int uid){    
         Connection pool = Connection.getInstance();
@@ -77,8 +65,7 @@ public class memberDbase{
     
     //WIL UPDATE ONE MEMBER
     //THIS WILL NOT UPDATE PASSWORDS
-    //WILL MAKE ANOTHER ONE FOR UPDATING JUST PASSWORDS BASED ON A USERNAME 
-    //ONNLY USABLE VIA ADMIN
+    //ONLY USABLE VIA ADMIN
     public static void adminUpdate(Member member){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
@@ -140,7 +127,6 @@ public class memberDbase{
         }       
     }
     
-    //NEEDS TESTING 
     //THIS WILL SELECT ALL MEMBERS IN THE MEMBER DATABASE 
     //THIS WILL HAVE 2 PURPOSES 
     //1: USE FOR THE ADMIN VIEW ALL MEMBERS
@@ -174,11 +160,10 @@ public class memberDbase{
                 member.setAdmin(admin);                
                 members.add(member);
             }
-            
         }catch (SQLException e){
             System.err.println(e);
             return null;
-        }finally{
+        }finally{     
             DatabaseUtil.closeResultSet(rs);
             DatabaseUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
@@ -186,7 +171,6 @@ public class memberDbase{
         return members;
     }
 
-    //NEEDS TESTING 
     //THIS WILL SELECT ONE CAR
     //MAIN USE IS WHEN EDITING CARS FOR ADMINS 
     public static Member selectOne(int uid){
@@ -222,12 +206,8 @@ public class memberDbase{
             pool.freeConnection(connection);
         }
     }   
-    
-    //THIS DOES PASS RETRIEVALS 
-    //LIT THINGS HERE
-    //THIS IS FOR LOGINSSSSSS
-    //IT WORKSSSS
-    //:'D
+
+    //USED FOR VALIDATING USER/PASS FOR THE LOGIN
     public static boolean passRetrieve(String uName, String password){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();

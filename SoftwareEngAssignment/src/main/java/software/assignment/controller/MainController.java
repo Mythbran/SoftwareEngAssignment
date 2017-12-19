@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package software.assignment.controller;
 
 import java.io.IOException;
@@ -10,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +26,6 @@ public class MainController {
     //GENERAL PAGES 
     
     //CODE FOR THE MAIN WELCOME SCREEN 
-    //CAN SET UP COOKIES HERE. CODE IS BELOW 
     public static String hello(HttpServletRequest request){
         //Code for cookies below 
         /*String userName = CookieUtil.getCookieValue(request.getCookies(), "userName");
@@ -42,12 +37,7 @@ public class MainController {
     
     //MAIN RENTAL PAGE
     //WILL ACCESS THE DATABASE FROM HERE
-    public static String rentals(HttpServletRequest request){
-        
-        //CODE FOR WHEN USERS ARE ENTERED INTO THE MIX 
-        //IF MEMBER, WILL GIVE ACCESS TO DIFFERENT COUPONS
-        //IF ADMINSTRATOR, WILL GIVE ACCESS TO EDIT THE CARS 
-        //IF NOT JUST ACCESS TO VIEW 
+    public static String rentals(HttpServletRequest request){ 
         //if(request.isUserInRole("member")){
           //  return "mRentals";
         //}
@@ -61,8 +51,6 @@ public class MainController {
             List<Car> cars = carDbase.selectAll();
             request.setAttribute("cars", cars);
             return "rentals";     
-        
-
     }
 
     public static String rent(HttpServletRequest request){
@@ -81,12 +69,11 @@ public class MainController {
     public static String login(HttpServletRequest request){
         
         //CHECKS FOR USER ROLE 
-        //NEED TO PROGRAM THE DATABASE STUFF FOR IT 
         //WILL CHECK IF ADMIN AND IF ADMIN, GO DIRECTLY TO ADMINPORTAL
         //IF MEMBER WILL GO TO MEMBERPORTAL 
         //IF NOTHING COMES UP WILL RETURN AN ERROR
         if(request.isUserInRole("member")){
-            return "memPortal";
+            return "memberPortal";
         }
         else if(request.isUserInRole("administrator")){
             return "adminPortal";
@@ -122,7 +109,6 @@ public class MainController {
     
     //MEMBERSHIP CONFIRM CLASS 
     //WILL TAKE THE INPUT FROM THE MEMBERSHIP CLASS AND REPOST IT TO CONFIRM ALL DATA IS CORRECT 
-    //CAN ADD CONTRAINTS IN HERE LATER DURING TESTING PHASE 
     public static String memberConfirm(HttpServletRequest request){
         Member member = new Member();
         member.setfName(request.getParameter("fName"));
@@ -132,7 +118,6 @@ public class MainController {
         member.setuName(request.getParameter("uName"));
         member.setPassword(request.getParameter("password"));
         
-        //CAN ADD IN VALIDATION THINGS HERE
         /*
         Set<ConstraintViolation<Member>> errors = ValidationUtil.getValidator().validate(member);
         
@@ -155,8 +140,6 @@ public class MainController {
     }
     
     //ADDS THE MEMBER TO THE DATABASE 
-    //THERE IS CODE INSIDE THERE FOR VARIFICATION AND COOKIE PURPOSES 
-    //CODE IS COMMENTED OUT UNTIL SUITABLE CLASSES ARE MADE 
     public static String memberSubmit(HttpServletRequest request){
         HttpSession session = request.getSession(false);
         //if(session == null || session.getAttribute("member") == null){
@@ -177,16 +160,19 @@ public class MainController {
     }
     
     //GO TO MEMBER PORTAL
-    //HAVE TO REDIRECT TO LOGIN IF NOBODY IS CURRENTLY LOGGED IN 
-    //UHH.... YEA NEED TO PROGRAM STUFF FOR ACCESS CONTROL
     public static String memberPortal(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
         
-        return "memberPortal";
+        if(cookies != null)
+            return "memberPortal";
+        
+        else
+            return "redirect:login";
     }
     
     //GIVE MEMBERS THE ABILITY TO CHANGE THEIR INFO 
     //WILL BE SLIGHTLY DIFFERENT THAN EDITMEMBER
-    //WILL NOT HAVE THE ABILITY TO CHAGNE ADMIN FLAG
+    //WILL NOT HAVE THE ABILITY TO CHANGE ADMIN FLAG
     public static String memberEdit(HttpServletRequest request){
             int uid = 1; //Integer.parseInt(request.getParameter("uid"));
             Member member = memberDbase.selectOne(uid);
@@ -197,8 +183,7 @@ public class MainController {
     //ADMIN PAGES
     
     //EDIT MEMBER CODE
-    //THERE IS PERMISSIONS SET ON THIS FUNCTION 
-    //MUST PROGRAM THE PERMISSIONS PROPERLY
+    //THERE IS ADMIN PERMISSIONS SET ON THIS FUNCTION 
     public static String editMember(HttpServletRequest request){
        /* if(request.isUserInRole("member")){
             //Will have to pull the uid from the signed in user for this
@@ -252,7 +237,6 @@ public class MainController {
     }
     
     //ADMIN PORTAL CODE 
-    //NEED TO CODE PERMISSIONS
     public static String adminPortal(HttpServletRequest request){
         /*if(request.isUserInRole("administrator")){
             return "adminPortal";
@@ -279,7 +263,6 @@ public class MainController {
         car.setAvailability(request.getParameter("availability"));
         car.setLocation(request.getParameter("location"));
 
-        //CAN ADD IN VALIDATION THINGS HERE
         /*
         Set<ConstraintViolation<Member>> errors = ValidationUtil.getValidator().validate(member);
         
@@ -438,7 +421,7 @@ public class MainController {
          return "editOrder";
      }
     
-    public static String selectAllOrders(HttpServletRequest request){
+    public static String viewAllOrders(HttpServletRequest request){
         List<Order> orders = orderDbase.selectAll();
         request.setAttribute("orders", orders);    
         
@@ -448,7 +431,7 @@ public class MainController {
     public static String deleteOrder(HttpServletRequest request){
         orderDbase.deleteOne(Integer.parseInt(request.getParameter("oid")));
         System.out.println("oid");
-        return "redirect:selectAllOrders.do";
+        return "redirect:viewAllOrders.do";
     }
 
 }

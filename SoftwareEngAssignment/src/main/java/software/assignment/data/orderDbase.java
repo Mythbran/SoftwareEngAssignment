@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package software.assignment.data;
 
 import java.sql.PreparedStatement;
@@ -29,7 +24,7 @@ public class orderDbase {
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
         PreparedStatement ps = null;    
-        // I WONDER IF THERES A WAY TO CHANGE THIS INTO IT'S OWN SEPERATE METHOD
+       
         int active;
 
         Date date = Date.valueOf(LocalDate.now());
@@ -61,7 +56,6 @@ public class orderDbase {
               
     }
     
-    //NEEDS TESTING 
     //WILL DELETE ONE MEMBER 
     public static void deleteOne(int oid){    
         Connection pool = Connection.getInstance();
@@ -83,11 +77,8 @@ public class orderDbase {
                
     }   
     
-    
-    //NEEDS TESTING
     //WIL UPDATE ONE MEMBER
     //THIS WILL NOT UPDATE PASSWORDS
-    //WILL MAKE ANOTHER ONE FOR UPDATING JUST PASSWORDS BASED ON A USERNAME 
     public static void update(Order order){
         Connection pool = Connection.getInstance();
         java.sql.Connection connection = pool.getConnection();
@@ -116,7 +107,6 @@ public class orderDbase {
         }
     }
     
-    //NEEDS TESTING 
     //THIS WILL SELECT ALL MEMBERS IN THE MEMBER DATABASE 
     //THIS WILL HAVE 2 PURPOSES 
     //1: USE FOR THE ADMIN VIEW ALL MEMBERS
@@ -155,7 +145,6 @@ public class orderDbase {
         return orders;
     }
 
-    //NEEDS TESTING 
     //THIS WILL SELECT ONE CAR
     //MAIN USE IS WHEN EDITING CARS FOR ADMINS 
     public static Order selectOne(int oid){

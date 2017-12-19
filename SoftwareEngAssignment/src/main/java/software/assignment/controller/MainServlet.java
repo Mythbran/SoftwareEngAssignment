@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package software.assignment.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.util.*;
@@ -44,14 +39,7 @@ public class MainServlet extends HttpServlet {
                     view = MainController.hello(request);        
                     break;
             }
-            /*
-            //IDK TBH HERE FOR TESTING PURPOSES WILL REPURPOSE LATER 
-            case "/index.do": {
-                view = "index";
-                jspPath = "/WEB-INF/jsp/general/";
-                break;
-            }
-                   */    
+
             //MAIN PAGE FOR RENTALS 
             //THIS IS THE MAIN WEBPAGE TO SHOW ALL VEHICLES AVAILABLE FOR RENTAL
             case "/rentals.do":{
@@ -101,10 +89,7 @@ public class MainServlet extends HttpServlet {
                 view = MainController.memberConfirm(request);
                 break;
             }
-            
-            //OH SUBMIT 
-            //THIS IS WHERE THE MAGIC HAPPENS 
-            //AND DATABASES FILL UP
+
             //ADDS ALL INPUT INTO INTO THE MEMBER DATABASE 
             case "/memberSubmit.do":{
 
@@ -113,18 +98,15 @@ public class MainServlet extends HttpServlet {
             }
             
             //MEMBER PORTAL
-            //THIS WILL HOLD THE MEMBER EDIT PAGE AND SHIT
-            //IDK WHAT ELSE WOULD BE IN HERE 
-            //MEH WHO CARES 
+            //THIS WILL HOLD THE MEMBER EDIT PAGE
             case "/memberPortal.do":{
                 jspPath = "/WEB-INF/jsp/member/";
                 view = MainController.memberPortal(request);
                 break;
             }
             
-            //BASICALLY SAME AS ADMIN EDIT MEMBER 
+            //SAME AS ADMIN EDIT MEMBER 
             //WILL NOT INCLUDE ADMIN FLAG
-            //HEH AINTN GIVING THOSE PRIVILEGES
             case "/memberEdit.do":{
                 jspPath = "/WEB-INF/jsp/member/";
                 view = MainController.memberEdit(request);
@@ -148,7 +130,6 @@ public class MainServlet extends HttpServlet {
             //ADMIN PAGES  
                                           
             //ADMIN PORTAL 
-            //NEEDS MUCH MORE WORK 
             //WILL SEND TO THE MAIN PAGE HANDLING ALL ADMIN RELATED THINGS
             case "/adminPortal.do":{
                 view = MainController.adminPortal(request);
@@ -157,7 +138,6 @@ public class MainServlet extends HttpServlet {
             }
             
             //ADD CAR 
-            //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO ADD CARS TO THE DATABASE 
             case "/addCar.do":{
                 view = MainController.addCar(request);
@@ -180,22 +160,20 @@ public class MainServlet extends HttpServlet {
             }
 
             //EDIT CAR
-            //NEEDS DATABASE WORK 
             //THIS WILL ALLOW ADMINS TO EDIT CARS INCLUDING DELETING FROM DATABASE
             case "/editCar.do":{
                 view = MainController.editCar(request);
                 jspPath = "WEB-INF/jsp/admin/";
                 break; 
             }
-            
   
-                
             //VIEW ALL CARS 
             case"/viewAllCars.do":{
                 view = MainController.viewAllCars(request); 
                 jspPath = "WEB-INF/jsp/admin/";
                 break;
             }
+            
             //VIEW ALL MEMBERS
             //THIS WILL ALLOW ADMINS TO VIEW MEMBERS REGISTERED 
             //ADMINS WILL BE ALLOWED TO SET MEMBERS AS ADMINS
@@ -233,24 +211,23 @@ public class MainServlet extends HttpServlet {
             }
             
             //EDIT MEMBER
-            //THIS WILL ALLOW SIGNED IN MEMBERS TO EDIT THEIR INFORMATION 
-            //WILL ONLY BE AVAILABLE IF SIGNED IN 
-            //WILL ONLY ALLOW THE SIGNED IN MEMBER TO EDIT THEIR OWN INFO
-            
-            //EDIT : WILL ONLY BE AVAILABLE TO ADMIN
-            //TIME CONSTRAINTS :( 
+            //THIS WILL ALLOW ADMINS TO EDIT MEMBERS INFORMATION 
+            //WILL ONLY BE AVAILABLE TO ADMIN
+            //WILL ONLY ALLOW THE ADMIN TO EDIT THEIR OWN INFO
             case "/editMember.do":{
                 view = MainController.editMember(request);
                 jspPath= "/WEB-INF/jsp/admin/";
                 break;
             }
             
-            case "/selectAllOrders.do":{
-                 view= MainController.selectAllOrders(request);
+            //ALLOWS ADMINS TO SEE ALL ORDERS
+            case "/viewAllOrders.do":{
+                 view= MainController.viewAllOrders(request);
                  jspPath = "/WEB-INF/jsp/admin/";
                  break;
             }
 
+            //DELETES ORDER
             case "/deleteOrder.do":{
                 view = MainController.deleteOrder(request);
                 System.out.println(request.getParameter("uid"));
@@ -286,6 +263,8 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
     }
 
     /**
@@ -300,6 +279,18 @@ public class MainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+         String username = request.getParameter("uName");
+        String password = request.getParameter("password");
+        Cookie uc = new Cookie("userCookie", username);
+        Cookie pc = new Cookie("passCookie", password);
+        
+        //adds cookies to the response
+        response.addCookie(uc);
+        response.addCookie(pc);
+        
+        //send cookies back to browser
+        PrintWriter pw = response.getWriter();
+        pw.println("Login cookies have been added");
     }
 
     /**
@@ -309,7 +300,7 @@ public class MainServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet for a Car Rental Service";
     }// </editor-fold>
 
 }
