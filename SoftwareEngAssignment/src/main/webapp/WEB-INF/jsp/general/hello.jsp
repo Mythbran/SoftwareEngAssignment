@@ -13,6 +13,7 @@
     </head>
     
     <body>
+       
         <main>
             <p>
             <h1>Welcome to vehicle rental system</h1>            

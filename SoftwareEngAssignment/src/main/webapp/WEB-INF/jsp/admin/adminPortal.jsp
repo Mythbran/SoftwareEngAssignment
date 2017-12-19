@@ -13,6 +13,7 @@
     </head>
     
     <body>
+
         <main>
             <h1>Welcome to the Admin Portal</h1>
             <p>
@@ -31,7 +32,7 @@
                 </form>
             </p>
             <p>
-                <form action="<c:url value="selectAllOrders.do"/>" method="post">
+                <form action="<c:url value="viewAllOrders.do"/>" method="post">
                     <input type="submit" value="View All Orders" name="viewAllOrders" />
                 </form>
             </p>

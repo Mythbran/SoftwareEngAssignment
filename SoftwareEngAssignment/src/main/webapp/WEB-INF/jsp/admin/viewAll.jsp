@@ -23,7 +23,7 @@
                         <th>Phone Number</th>
                         <th>Credit Card</th>
                         <th>Username</th>
-                        <th>Is Admin</th>
+                        <th>Admin Privilege</th>
                         <th colspan="2">Actions</th>
                     </tr>
                 </thead>

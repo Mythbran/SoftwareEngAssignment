@@ -23,7 +23,20 @@
             </c:if>
             
             <h1>Login</h1>
-            
+            <!Checks if a user/pass cookie is made, and if not it makes one->
+            <%
+    Cookie[] cookies = request.getCookies();
+    if(cookies == null){
+   String username=request.getParameter("uName");
+    String password=request.getParameter("password");
+        Cookie uNameCookie = new Cookie("uName-cookie", username);
+        Cookie passwordCookie = new Cookie("password-cookie", password);
+        uNameCookie.setMaxAge(24*60*60);
+        passwordCookie.setMaxAge(24*60*60);
+        response.addCookie(uNameCookie);
+        response.addCookie(passwordCookie);
+    }
+   %>
             <form method="post" action="<c:url value="loginCheck.do"/>"/>
                     
                 <p>

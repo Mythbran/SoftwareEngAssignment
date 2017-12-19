@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="css/main.css">       
-        <title>Member signup</title>
+        <title>Member Signup</title>
     </head>
     
     <body>

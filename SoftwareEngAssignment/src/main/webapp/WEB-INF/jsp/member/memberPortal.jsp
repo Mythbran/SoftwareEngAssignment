@@ -13,7 +13,6 @@
     <h1>Member Portal</h1>
     </head>
     <body>
-        
         <p>
             <form action="<c:url value="memberEdit.do"/>" method="post">
                 <input type="submit" value="Edit Your Information" name="memberEdit" />
@@ -26,14 +25,14 @@
                 <!-- needs to be coded in -->
         </p>
         <p>
-            <form action="<c:url value="viewOrders.do"/>" method="post">
+            <form action="<c:url value="viewAllOrders.do"/>" method="post">
                 <input type="submit" value="View Orders" name="viewOrders" />
             </form>
-                <!-- needs to be coded in-->
+               
         </p>
         
         <p>
-            <!-- might add password change -->
+         
         </p>
         <p>
             <form action="<c:url value="hello.do"/>" method="post">

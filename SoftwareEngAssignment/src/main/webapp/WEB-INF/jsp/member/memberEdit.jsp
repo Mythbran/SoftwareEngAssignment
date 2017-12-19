@@ -49,13 +49,7 @@
                         <input type="submit" value="View All" />
                     </form>
                 </p>
-            </form>
-                    
 
-        
-                
-                   
-              
         </main>
         <footer>
                
