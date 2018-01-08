@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>All Records</title>
+        <title>All Cars</title>
     </head>
 
         <form>    
             <table border="1" width="40%">
-                <caption>All Cars</caption>
+                <caption>All Available Rental Cars</caption>
                 <thead>
                     <tr>
                         <th>Car ID</th>
@@ -22,7 +22,7 @@
                         <th>Price</th>
                         <th>Availability</th>
                         <th>Location</th>
-                        <th colspan="2">Actions</th>
+                        <th colspan="2">Rent</th>
                     </tr>
                 </thead>
                 <tbody>
