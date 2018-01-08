@@ -230,7 +230,12 @@ public class MainServlet extends HttpServlet {
             //DELETES ORDER
             case "/deleteOrder.do":{
                 view = MainController.deleteOrder(request);
-                System.out.println(request.getParameter("uid"));
+                break;
+            }
+            
+            case "/magic.do":{
+                jspPath = "/WEB-INF/css/";
+                view = "magic";
                 break;
             }
             

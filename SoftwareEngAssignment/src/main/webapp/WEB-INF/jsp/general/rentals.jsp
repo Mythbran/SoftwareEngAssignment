@@ -8,25 +8,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>All Cars</title>
+        <title>All Records</title>
     </head>
 
         <form>    
             <table border="1" width="40%">
-                <caption>All Rental Cars Available Cars</caption>
+                <caption>All Cars</caption>
                 <thead>
                     <tr>
+                        <th>Car ID</th>
                         <th>Make</th>
                         <th>Model</th>
                         <th>Price</th>
                         <th>Availability</th>
                         <th>Location</th>
-                        <th colspan="1">Rent</th>
+                        <th colspan="2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="row" items="${cars}" varStatus="s">
                         <tr>
+                            <td><c:out value="${s.count}"/></td>
                             <td><c:out value="${row.make}"/></td>                                
                             <td><c:out value="${row.model}"/></td>                            
                             <td><c:out value="${row.price}"/></td>                            

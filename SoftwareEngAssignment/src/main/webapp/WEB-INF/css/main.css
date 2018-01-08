@@ -1,0 +1,89 @@
+main{
+    font-family: sans-serif;
+    padding-left: 1em;
+}
+
+footer{
+    font-style: italic;
+    font-family: sans-serif;
+    border-top: silver solid;
+    padding-top: 0.5em;
+    padding-left: 1em;
+    margin-top: 1.5em;
+    width: 18em;
+    color: lightslategrey;
+}
+
+label{
+    display: block;
+    float: left;
+    color: cornflowerblue;
+    font-weight: bolder;
+    text-align: right;
+    width: 10em;
+}
+
+a{
+    color: limegreen;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+input{
+    margin-left: 1em;
+}
+
+select{
+    margin-left: 1em;
+}
+
+span.output{
+    font-weight: bolder;
+    font-style: italic;
+    color: blueviolet;
+    margin-left: 1em;
+}
+
+span.user{
+    font-weight: bolder;
+    font-style: italic;
+    color: blueviolet;
+}
+
+h1{
+    color: darkcyan;
+    background: url(../images/smiles/face-smile.png) no-repeat left center;
+    text-indent: 1.25em;
+}
+
+h2{
+    color: darkgreen;
+}
+
+table {
+    margin-left: 2em;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: .5em;
+}
+
+.error{
+    color:red;
+    font-style: oblique;
+}
+
+p.message{
+    margin-left: 1em; 
+    font-weight: bolder;
+    font-style: oblique;
+    color: darkorange;
+}

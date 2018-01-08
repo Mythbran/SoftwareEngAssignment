@@ -52,9 +52,7 @@
                 <p>
                     <label>&nbsp;</label>
                     <input type="submit" value="Send"/>            
-                    <form action="<c:url value="viewAll.do"/>" method="post"> 
-                        <input type="submit" value="View All" />
-                    </form>
+
                 </p>
             </form>  
         </main>
