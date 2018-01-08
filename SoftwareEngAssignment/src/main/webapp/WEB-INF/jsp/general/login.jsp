@@ -9,6 +9,8 @@
 <html>
     
     <head> 
+         <link rel="stylesheet" href="<c:url value="/css/main.css" />" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
     </head>
     
