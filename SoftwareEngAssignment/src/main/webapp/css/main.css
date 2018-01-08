@@ -1,0 +1,143 @@
+/* 
+    Created on : May 11, 2016, 11:13:24 PM
+    Author     : Alex
+*/
+
+main{
+    font-family: sans-serif;
+    padding-left: 1em;
+}
+
+.header {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+}
+
+footer{
+    font-style: italic;
+    font-family: sans-serif;
+    border-top: red;
+    padding-top: 0.5em;
+    padding-left: 1em;
+    margin-top: 1.5em;
+    width: 18em;
+    color: lightslategrey;
+}
+
+label{
+    display: block;
+    float: left;
+    color: cornflowerblue;
+    font-weight: bolder;
+    text-align: left;
+    width: 10em;
+}
+
+a{
+    color: limegreen;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+input{
+    margin-left: 1em;
+}
+
+select{
+    margin-left: 1em;
+}
+
+span.output{
+    font-weight: bolder;
+    font-style: italic;
+    color: blueviolet;
+    margin-left: 1em;
+}
+
+span.user{
+    font-weight: bolder;
+    font-style: italic;
+    color: orchid;
+}
+input[type=text] {
+    border: 2px solid orchid;
+    border-radius: 4px;
+}
+
+input[type=submit]{
+    border: 2px solid red;
+     border-radius: 12px;
+     font-size: 20px;
+     padding: 12px 28px;
+}
+
+input[type=reset]{
+    border: 2px solid yellow;
+     border-radius: 12px;
+     font-size: 20px;
+     padding: 12px 28px;
+}
+
+/*img {
+    border-radius: 8px;
+}*/
+
+button {
+   /* background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    float: left;
+    
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+   
+}
+
+buton: hover{
+   background-color: red; /* Green */
+    color: white;
+}
+
+h1{
+    color: red;
+   /* text-indent: 1.00em;*/
+   background: url(../img/hondaCivic) no-repeat right center;
+}
+
+h2{
+    color: orangered;
+}
+
+table {
+    margin-left: 2em;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: .5em;
+}
+
+.error{
+    color:red;
+    font-style: oblique;
+}
+
+p.message{
+    margin-left: 1em; 
+    font-weight: bolder;
+    font-style: oblique;
+    color: darkorange;
+}
