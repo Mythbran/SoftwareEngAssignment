@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <link rel="stylesheet" href="<c:url value="/css/main.css" />" type="text/css">
         <title>All Records</title>
     </head>
 
